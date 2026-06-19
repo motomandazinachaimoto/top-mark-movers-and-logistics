@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { openQuote } from "@/components/site/QuoteDialog";
 import heroPort from "@/assets/hero-port.jpg";
 import heroFleet from "@/assets/hero-fleet.jpg";
 import heroAir from "@/assets/hero-air.jpg";
@@ -111,12 +113,12 @@ export function Hero() {
                   className="animate-rise flex flex-wrap items-center gap-3 pt-2"
                   style={{ animationDelay: "420ms" }}
                 >
-                  <a href="#quote" className="btn-aqua btn-aqua-hover">
-                    Get a Free Logistics Quote <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a href="#services" className="btn-ghost btn-ghost-hover">
+                  <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
+                    Get Quote <ArrowRight className="h-4 w-4" />
+                  </button>
+                  <Link to="/services" className="btn-ghost btn-ghost-hover">
                     <PlayCircle className="h-4 w-4" /> Explore Services
-                  </a>
+                  </Link>
                 </div>
               </div>
             ) : null,
