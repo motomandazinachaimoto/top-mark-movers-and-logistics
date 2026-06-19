@@ -178,12 +178,13 @@ function TruckHirePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/quote"
+                  <button
+                    type="button"
+                    onClick={openQuote}
                     className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--aqua-deep)] hover:underline"
                   >
                     Reserve this size →
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
