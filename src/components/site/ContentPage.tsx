@@ -6,6 +6,20 @@ import { Link } from "@tanstack/react-router";
 import { Check, ArrowRight } from "lucide-react";
 import { openQuote } from "@/components/site/QuoteDialog";
 import type { PageContent, PageBlock } from "@/lib/pages";
+import heroPort from "@/assets/hero-port.jpg";
+import heroFleet from "@/assets/hero-fleet.jpg";
+import heroAir from "@/assets/hero-air.jpg";
+import heroMovers from "@/assets/hero-movers.jpg";
+
+function pickHero(slug: string) {
+  const s = slug.toLowerCase();
+  if (s.includes("truck") || s.includes("fleet") || s.includes("ftl") || s.includes("ltl") || s.includes("petroleum") || s.includes("industrial")) return heroFleet;
+  if (s.includes("air")) return heroAir;
+  if (s.includes("ocean") || s.includes("global") || s.includes("project") || s.includes("cold") || s.includes("coverage")) return heroPort;
+  if (s.includes("residential") || s.includes("office") || s.includes("packing") || s.includes("mounting") || s.includes("services")) return heroMovers;
+  if (s.includes("about") || s.includes("contact") || s.includes("careers") || s.includes("blog") || s.includes("quote")) return heroMovers;
+  return heroPort;
+}
 
 function Block({ block }: { block: PageBlock }) {
   const light = block.light;
