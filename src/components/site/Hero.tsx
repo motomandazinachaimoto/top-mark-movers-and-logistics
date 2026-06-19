@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { openQuote } from "@/components/site/QuoteDialog";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import heroPort from "@/assets/hero-port.jpg";
 import heroFleet from "@/assets/hero-fleet.jpg";
 import heroAir from "@/assets/hero-air.jpg";
