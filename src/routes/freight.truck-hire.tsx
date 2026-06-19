@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { openQuote } from "@/components/site/QuoteDialog";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
@@ -120,8 +121,8 @@ function TruckHirePage() {
               style={{ animationDelay: "360ms" }}
             >
               <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
-                Get Your Free Quote
-              </Link>
+                Get Quote
+              </button>
               <a
                 href="tel:+254715729441"
                 className="btn-ghost btn-ghost-hover"
@@ -211,8 +212,8 @@ function TruckHirePage() {
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
-                    Get Your Free Quote
-                  </Link>
+                    Get Quote
+                  </button>
                   <a
                     href="tel:+254715729441"
                     className="btn-ghost btn-ghost-hover"
