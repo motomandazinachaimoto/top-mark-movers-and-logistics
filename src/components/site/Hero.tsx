@@ -107,10 +107,16 @@ export function Hero() {
                   ))}
                 </h1>
                 <p
-                  className="animate-rise max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
+                  className="animate-rise min-h-[5.5rem] max-w-xl text-base leading-relaxed text-white/75 sm:min-h-[4.5rem] sm:text-lg"
                   style={{ animationDelay: "270ms" }}
                 >
-                  {s.desc}
+                  {typed.text}
+                  <span
+                    className={`ml-0.5 inline-block h-5 w-[2px] -translate-y-[2px] bg-[var(--aqua)] align-middle ${
+                      typed.done ? "animate-pulse" : ""
+                    }`}
+                    aria-hidden
+                  />
                 </p>
                 <div
                   className="animate-rise flex flex-wrap items-center gap-3 pt-2"
