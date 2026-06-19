@@ -4,6 +4,7 @@ import { CTA } from "@/components/site/CTA";
 import { useReveal } from "@/hooks/use-reveal";
 import { Link } from "@tanstack/react-router";
 import { Check, ArrowRight } from "lucide-react";
+import { openQuote } from "@/components/site/QuoteDialog";
 import type { PageContent, PageBlock } from "@/lib/pages";
 
 function Block({ block }: { block: PageBlock }) {
@@ -230,6 +231,13 @@ function CTALink({
   children: React.ReactNode;
 }) {
   const cls = primary ? "btn-aqua btn-aqua-hover" : "btn-ghost btn-ghost-hover";
+  if (href === "/quote" || href === "/#quote") {
+    return (
+      <button type="button" onClick={openQuote} className={cls}>
+        {children}
+      </button>
+    );
+  }
   if (href.startsWith("/") && !href.startsWith("/#")) {
     return (
       <Link to={href} className={cls}>

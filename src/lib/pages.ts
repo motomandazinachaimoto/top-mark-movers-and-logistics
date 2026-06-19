@@ -24,7 +24,7 @@ export type PageContent = {
   blocks: PageBlock[];
 };
 
-const QUOTE_CTA = { label: "Get Your Free Quote", href: "/quote" };
+const QUOTE_CTA = { label: "Get Quote", href: "/quote" };
 const CALL_CTA = { label: "Call 0715 729 441", href: "tel:+254715729441" };
 
 export const PAGES: Record<string, PageContent> = {
