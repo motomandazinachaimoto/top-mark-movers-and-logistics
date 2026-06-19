@@ -176,14 +176,26 @@ function Block({ block }: { block: PageBlock }) {
 
 export function ContentPage({ page }: { page: PageContent }) {
   const ref = useReveal<HTMLDivElement>();
+  const heroImg = pickHero(page.slug);
   return (
     <div ref={ref} className="relative min-h-screen overflow-x-clip bg-background text-foreground">
       <Header />
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+        {/* Hero with cinematic background */}
+        <section className="relative isolate flex min-h-[78svh] items-center overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+          <div className="absolute inset-0 -z-10">
+            <img
+              src={heroImg}
+              alt=""
+              className="h-full w-full animate-kenburns object-cover"
+              loading="eager"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/95 via-[#0A192F]/75 to-[#0A192F]/55" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent" />
+          </div>
           <div className="absolute inset-x-0 top-0 -z-10 mx-auto h-96 max-w-5xl bg-gradient-aqua opacity-[0.10] blur-[140px]" />
-          <div className="bg-grid absolute inset-0 -z-10 opacity-30" />
+          <div className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
           <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-white/80 animate-rise">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-aqua" />
