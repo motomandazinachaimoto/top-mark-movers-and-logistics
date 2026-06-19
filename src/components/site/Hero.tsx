@@ -37,6 +37,8 @@ const SLIDES = [
 
 export function Hero() {
   const [idx, setIdx] = useState(0);
+  const current = SLIDES[idx];
+  const typed = useTypewriter(current.desc, 18, 700);
 
   useEffect(() => {
     const id = window.setInterval(
