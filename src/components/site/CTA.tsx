@@ -1,4 +1,6 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { openQuote } from "@/components/site/QuoteDialog";
 
 export function CTA() {
   return (
@@ -10,15 +12,15 @@ export function CTA() {
             Your next shipment is <span className="text-gradient-aqua">one conversation away.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-white/70">
-            Talk to a logistics architect today. Same-day quotes for time-sensitive freight and white-glove relocations.
+            Talk to a logistics coordinator today. Same-day quotes for time-sensitive freight and white-glove moves.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#quote" className="btn-aqua btn-aqua-hover">
-              Start a Quote <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#contact" className="btn-ghost btn-ghost-hover">
+            <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
+              Get Quote <ArrowRight className="h-4 w-4" />
+            </button>
+            <Link to="/contact" className="btn-ghost btn-ghost-hover">
               Speak to Operations
-            </a>
+            </Link>
           </div>
         </div>
       </div>

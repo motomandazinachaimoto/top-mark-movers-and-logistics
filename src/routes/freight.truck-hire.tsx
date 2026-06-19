@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { openQuote } from "@/components/site/QuoteDialog";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
@@ -119,9 +120,9 @@ function TruckHirePage() {
               className="mt-10 flex flex-wrap items-center justify-center gap-3 animate-rise"
               style={{ animationDelay: "360ms" }}
             >
-              <Link to="/quote" className="btn-aqua btn-aqua-hover">
-                Get Your Free Quote
-              </Link>
+              <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
+                Get Quote
+              </button>
               <a
                 href="tel:+254715729441"
                 className="btn-ghost btn-ghost-hover"
@@ -177,12 +178,13 @@ function TruckHirePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/quote"
+                  <button
+                    type="button"
+                    onClick={openQuote}
                     className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--aqua-deep)] hover:underline"
                   >
                     Reserve this size →
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
@@ -210,9 +212,9 @@ function TruckHirePage() {
                   move with care and efficiency.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link to="/quote" className="btn-aqua btn-aqua-hover">
-                    Get Your Free Quote
-                  </Link>
+                  <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">
+                    Get Quote
+                  </button>
                   <a
                     href="tel:+254715729441"
                     className="btn-ghost btn-ghost-hover"

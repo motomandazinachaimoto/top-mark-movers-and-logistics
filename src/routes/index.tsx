@@ -3,10 +3,10 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Services } from "@/components/site/Services";
 import { Metrics } from "@/components/site/Metrics";
-import { QuoteWizard } from "@/components/site/QuoteWizard";
 import { Trust } from "@/components/site/Trust";
 import { CTA } from "@/components/site/CTA";
 import { Footer } from "@/components/site/Footer";
+import { openQuote } from "@/components/site/QuoteDialog";
 import { useReveal } from "@/hooks/use-reveal";
 import { Truck, ShieldCheck, Clock, Globe2 } from "lucide-react";
 
@@ -80,7 +80,7 @@ function Index() {
               ))}
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link to="/quote" className="btn-aqua btn-aqua-hover">Get a Free Quote</Link>
+              <button type="button" onClick={openQuote} className="btn-aqua btn-aqua-hover">Get Quote</button>
               <Link to="/freight/truck-hire" className="btn-ghost btn-ghost-hover" style={{ color: "#0A192F", borderColor: "rgba(10,25,47,0.18)", background: "rgba(10,25,47,0.04)" }}>
                 Explore Truck Hire
               </Link>
@@ -89,7 +89,6 @@ function Index() {
         </section>
 
         <Metrics />
-        <QuoteWizard />
         <Trust />
         <CTA />
       </main>
