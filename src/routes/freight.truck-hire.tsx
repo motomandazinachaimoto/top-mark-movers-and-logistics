@@ -4,6 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
 import { useReveal } from "@/hooks/use-reveal";
+import heroFleet from "@/assets/hero-fleet.jpg";
 import {
   Truck,
   PackageCheck,
