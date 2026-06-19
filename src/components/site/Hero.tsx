@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { openQuote } from "@/components/site/QuoteDialog";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import heroPort from "@/assets/hero-port.jpg";
 import heroFleet from "@/assets/hero-fleet.jpg";
 import heroAir from "@/assets/hero-air.jpg";
@@ -36,6 +37,8 @@ const SLIDES = [
 
 export function Hero() {
   const [idx, setIdx] = useState(0);
+  const current = SLIDES[idx];
+  const typed = useTypewriter(current.desc, 18, 700);
 
   useEffect(() => {
     const id = window.setInterval(
@@ -104,10 +107,16 @@ export function Hero() {
                   ))}
                 </h1>
                 <p
-                  className="animate-rise max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
+                  className="animate-rise min-h-[5.5rem] max-w-xl text-base leading-relaxed text-white/75 sm:min-h-[4.5rem] sm:text-lg"
                   style={{ animationDelay: "270ms" }}
                 >
-                  {s.desc}
+                  {typed.text}
+                  <span
+                    className={`ml-0.5 inline-block h-5 w-[2px] -translate-y-[2px] bg-[var(--aqua)] align-middle ${
+                      typed.done ? "animate-pulse" : ""
+                    }`}
+                    aria-hidden
+                  />
                 </p>
                 <div
                   className="animate-rise flex flex-wrap items-center gap-3 pt-2"
