@@ -308,8 +308,13 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
 
               {data.method === "email" ? (
                 <Field icon={Mail} label="Email address" type="email" value={data.email} onChange={(v) => setData({ ...data, email: v })} placeholder="jane@company.com" />
-              ) : data.method ? (
-                <Field icon={Phone} label={data.method === "whatsapp" ? "WhatsApp number" : "Phone number"} value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="+254 700 000 000" />
+              ) : data.method === "whatsapp" ? (
+                <Field icon={Phone} label="WhatsApp number" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="+254 700 000 000" />
+              ) : data.method === "call" ? (
+                <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white/70">
+                  Tapping <span className="text-white">Send Request</span> will dial our office line{" "}
+                  <a href={`tel:${OFFICE_PHONE}`} className="text-[var(--aqua)]">+254 715 729 441</a> on your device.
+                </div>
               ) : null}
             </div>
           )}
