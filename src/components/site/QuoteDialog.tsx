@@ -12,6 +12,7 @@ import {
   ArrowRight,
   ArrowLeft,
   Check,
+  Building2,
 } from "lucide-react";
 import {
   Dialog,
@@ -19,6 +20,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+
+const OFFICE_PHONE = "+254715729441";
+const OFFICE_WHATSAPP = "254715729441";
+const OFFICE_EMAIL = "operations@topmark.co";
 
 const STEPS = ["Service", "Details", "Contact"] as const;
 const EVENT = "topmark:open-quote";
@@ -73,8 +78,10 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
   const [done, setDone] = useState(false);
   const [data, setData] = useState({
     kind: "" as Kind,
-    // Moving / office
+    // House moving
     bedrooms: "",
+    // Office / commercial business
+    businessType: "",
     // Freight
     goods: "",
     // Common
@@ -90,24 +97,69 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
   });
 
   const progress = ((step + 1) / STEPS.length) * 100;
-  const isMove = data.kind === "moving" || data.kind === "office";
+  const isHouse = data.kind === "moving";
+  const isOffice = data.kind === "office";
   const isFreight = data.kind === "freight";
 
   const can = (() => {
     if (step === 0) return !!data.kind;
     if (step === 1) {
       const route = data.origin.trim().length > 1 && data.destination.trim().length > 1;
-      if (isMove) return route && data.bedrooms.trim().length > 0;
+      if (isHouse) return route && data.bedrooms.trim().length > 0;
+      if (isOffice) return route && data.businessType.trim().length > 1;
       if (isFreight) return route && data.goods.trim().length > 1;
       return false;
     }
     if (step === 2) {
       if (!data.name.trim() || !data.method) return false;
       if (data.method === "email") return /.+@.+\..+/.test(data.email);
+      if (data.method === "call") return true;
       return data.phone.trim().length >= 7;
     }
     return false;
   })();
+
+  const submit = () => {
+    if (!can) return;
+    const kindLabel =
+      data.kind === "moving" ? "House Moving" : data.kind === "office" ? "Office / Commercial Relocation" : "Commercial Freight";
+    const lines = [
+      `Hello Topmark, I would like a quote.`,
+      ``,
+      `Service: ${kindLabel}`,
+      isHouse ? `House size: ${data.bedrooms}` : "",
+      isOffice ? `Business type: ${data.businessType}` : "",
+      isFreight ? `Goods: ${data.goods}` : "",
+      `From: ${data.origin}`,
+      `To: ${data.destination}`,
+      data.date ? `Preferred date: ${data.date}` : "",
+      ``,
+      `Name: ${data.name}`,
+      data.phone ? `Phone: ${data.phone}` : "",
+      data.email ? `Email: ${data.email}` : "",
+    ].filter(Boolean);
+    const message = lines.join("\n");
+
+    if (typeof window !== "undefined") {
+      if (data.method === "call") {
+        window.location.href = `tel:${OFFICE_PHONE}`;
+      } else if (data.method === "whatsapp") {
+        window.open(
+          `https://wa.me/${OFFICE_WHATSAPP}?text=${encodeURIComponent(message)}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      } else if (data.method === "email") {
+        const subject = `Quote request — ${kindLabel}`;
+        window.location.href = `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(
+          subject,
+        )}&body=${encodeURIComponent(message)}`;
+      }
+    }
+    setDone(true);
+    onDone?.();
+  };
+
 
   return (
     <div className="relative overflow-hidden p-6 sm:p-8">
@@ -173,7 +225,7 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
             </div>
           )}
 
-          {step === 1 && isMove && (
+          {step === 1 && isHouse && (
             <div className="animate-rise grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label className="mb-2 block text-[10px] uppercase tracking-[0.18em] text-white/55">
@@ -199,6 +251,15 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
               <Field icon={MapPin} label="Pick-up location" value={data.origin} onChange={(v) => setData({ ...data, origin: v })} placeholder="e.g. Kilimani, Nairobi" />
               <Field icon={MapPin} label="New location" value={data.destination} onChange={(v) => setData({ ...data, destination: v })} placeholder="e.g. Karen, Nairobi" />
               <Field icon={Package} label="Moving date" type="date" value={data.date} onChange={(v) => setData({ ...data, date: v })} />
+            </div>
+          )}
+
+          {step === 1 && isOffice && (
+            <div className="animate-rise grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Field icon={Building2} label="Type / nature of business" value={data.businessType} onChange={(v) => setData({ ...data, businessType: v })} placeholder="e.g. Retail shop, Law firm, Clinic" />
+              <Field icon={Package} label="Preferred move date" type="date" value={data.date} onChange={(v) => setData({ ...data, date: v })} />
+              <Field icon={MapPin} label="From (current address)" value={data.origin} onChange={(v) => setData({ ...data, origin: v })} placeholder="e.g. Westlands, Nairobi" />
+              <Field icon={MapPin} label="To (new address)" value={data.destination} onChange={(v) => setData({ ...data, destination: v })} placeholder="e.g. Upper Hill, Nairobi" />
             </div>
           )}
 
@@ -247,8 +308,13 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
 
               {data.method === "email" ? (
                 <Field icon={Mail} label="Email address" type="email" value={data.email} onChange={(v) => setData({ ...data, email: v })} placeholder="jane@company.com" />
-              ) : data.method ? (
-                <Field icon={Phone} label={data.method === "whatsapp" ? "WhatsApp number" : "Phone number"} value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="+254 700 000 000" />
+              ) : data.method === "whatsapp" ? (
+                <Field icon={Phone} label="WhatsApp number" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="+254 700 000 000" />
+              ) : data.method === "call" ? (
+                <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white/70">
+                  Tapping <span className="text-white">Send Request</span> will dial our office line{" "}
+                  <a href={`tel:${OFFICE_PHONE}`} className="text-[var(--aqua)]">+254 715 729 441</a> on your device.
+                </div>
               ) : null}
             </div>
           )}
@@ -274,15 +340,11 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
             ) : (
               <button
                 type="button"
-                onClick={() => {
-                  if (!can) return;
-                  setDone(true);
-                  onDone?.();
-                }}
+                onClick={submit}
                 disabled={!can}
                 className="btn-aqua btn-aqua-hover disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Send Request <Check className="h-4 w-4" />
+                {data.method === "call" ? "Call Office" : data.method === "whatsapp" ? "Send on WhatsApp" : data.method === "email" ? "Send Email" : "Send Request"} <Check className="h-4 w-4" />
               </button>
             )}
           </div>
