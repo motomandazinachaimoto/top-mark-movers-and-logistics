@@ -12,6 +12,7 @@ import {
   ArrowRight,
   ArrowLeft,
   Check,
+  Building2,
 } from "lucide-react";
 import {
   Dialog,
@@ -19,6 +20,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+
+const OFFICE_PHONE = "+254715729441";
+const OFFICE_WHATSAPP = "254715729441";
+const OFFICE_EMAIL = "operations@topmark.co";
 
 const STEPS = ["Service", "Details", "Contact"] as const;
 const EVENT = "topmark:open-quote";
