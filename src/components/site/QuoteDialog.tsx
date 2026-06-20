@@ -340,15 +340,11 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
             ) : (
               <button
                 type="button"
-                onClick={() => {
-                  if (!can) return;
-                  setDone(true);
-                  onDone?.();
-                }}
+                onClick={submit}
                 disabled={!can}
                 className="btn-aqua btn-aqua-hover disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Send Request <Check className="h-4 w-4" />
+                {data.method === "call" ? "Call Office" : data.method === "whatsapp" ? "Send on WhatsApp" : data.method === "email" ? "Send Email" : "Send Request"} <Check className="h-4 w-4" />
               </button>
             )}
           </div>
