@@ -23,7 +23,7 @@ import {
 
 const OFFICE_PHONE = "+254719 174393";
 const OFFICE_WHATSAPP = "+254719 174393";
-const OFFICE_EMAIL = "operations@topmark.co";
+const OFFICE_EMAIL = "info@topmarkmovers.com";
 
 const STEPS = ["Service", "Details", "Contact"] as const;
 const EVENT = "topmark:open-quote";
