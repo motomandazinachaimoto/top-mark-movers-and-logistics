@@ -78,8 +78,10 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
   const [done, setDone] = useState(false);
   const [data, setData] = useState({
     kind: "" as Kind,
-    // Moving / office
+    // House moving
     bedrooms: "",
+    // Office / commercial business
+    businessType: "",
     // Freight
     goods: "",
     // Common
@@ -95,24 +97,69 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
   });
 
   const progress = ((step + 1) / STEPS.length) * 100;
-  const isMove = data.kind === "moving" || data.kind === "office";
+  const isHouse = data.kind === "moving";
+  const isOffice = data.kind === "office";
   const isFreight = data.kind === "freight";
 
   const can = (() => {
     if (step === 0) return !!data.kind;
     if (step === 1) {
       const route = data.origin.trim().length > 1 && data.destination.trim().length > 1;
-      if (isMove) return route && data.bedrooms.trim().length > 0;
+      if (isHouse) return route && data.bedrooms.trim().length > 0;
+      if (isOffice) return route && data.businessType.trim().length > 1;
       if (isFreight) return route && data.goods.trim().length > 1;
       return false;
     }
     if (step === 2) {
       if (!data.name.trim() || !data.method) return false;
       if (data.method === "email") return /.+@.+\..+/.test(data.email);
+      if (data.method === "call") return true;
       return data.phone.trim().length >= 7;
     }
     return false;
   })();
+
+  const submit = () => {
+    if (!can) return;
+    const kindLabel =
+      data.kind === "moving" ? "House Moving" : data.kind === "office" ? "Office / Commercial Relocation" : "Commercial Freight";
+    const lines = [
+      `Hello Topmark, I would like a quote.`,
+      ``,
+      `Service: ${kindLabel}`,
+      isHouse ? `House size: ${data.bedrooms}` : "",
+      isOffice ? `Business type: ${data.businessType}` : "",
+      isFreight ? `Goods: ${data.goods}` : "",
+      `From: ${data.origin}`,
+      `To: ${data.destination}`,
+      data.date ? `Preferred date: ${data.date}` : "",
+      ``,
+      `Name: ${data.name}`,
+      data.phone ? `Phone: ${data.phone}` : "",
+      data.email ? `Email: ${data.email}` : "",
+    ].filter(Boolean);
+    const message = lines.join("\n");
+
+    if (typeof window !== "undefined") {
+      if (data.method === "call") {
+        window.location.href = `tel:${OFFICE_PHONE}`;
+      } else if (data.method === "whatsapp") {
+        window.open(
+          `https://wa.me/${OFFICE_WHATSAPP}?text=${encodeURIComponent(message)}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      } else if (data.method === "email") {
+        const subject = `Quote request — ${kindLabel}`;
+        window.location.href = `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(
+          subject,
+        )}&body=${encodeURIComponent(message)}`;
+      }
+    }
+    setDone(true);
+    onDone?.();
+  };
+
 
   return (
     <div className="relative overflow-hidden p-6 sm:p-8">
