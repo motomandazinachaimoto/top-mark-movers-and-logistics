@@ -21,8 +21,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-const OFFICE_PHONE = "+254715729441";
-const OFFICE_WHATSAPP = "254715729441";
+const OFFICE_PHONE = "+254719 174393";
+const OFFICE_WHATSAPP = "+254719 174393";
 const OFFICE_EMAIL = "operations@topmark.co";
 
 const STEPS = ["Service", "Details", "Contact"] as const;
@@ -313,7 +313,7 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
               ) : data.method === "call" ? (
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white/70">
                   Tapping <span className="text-white">Send Request</span> will dial our office line{" "}
-                  <a href={`tel:${OFFICE_PHONE}`} className="text-[var(--aqua)]">+254 715 729 441</a> on your device.
+                  <a href={`tel:${OFFICE_PHONE}`} className="text-[var(--aqua)]">+254 719 174 393</a> on your device.
                 </div>
               ) : null}
             </div>
