@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuoteRouteImport } from './routes/quote'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as CoverageRouteImport } from './routes/coverage'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -38,6 +39,11 @@ import { Route as FreightFtlRouteImport } from './routes/freight.ftl'
 const QuoteRoute = QuoteRouteImport.update({
   id: '/quote',
   path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FleetRoute = FleetRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/fleet': typeof FleetRoute
+  '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRoute
   '/freight/ftl': typeof FreightFtlRoute
   '/freight/industrial': typeof FreightIndustrialRoute
@@ -196,6 +203,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/fleet': typeof FleetRoute
+  '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRoute
   '/freight/ftl': typeof FreightFtlRoute
   '/freight/industrial': typeof FreightIndustrialRoute
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/fleet': typeof FleetRoute
+  '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRoute
   '/freight/ftl': typeof FreightFtlRoute
   '/freight/industrial': typeof FreightIndustrialRoute
@@ -253,6 +262,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/coverage'
     | '/fleet'
+    | '/gallery'
     | '/quote'
     | '/freight/ftl'
     | '/freight/industrial'
@@ -280,6 +290,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/coverage'
     | '/fleet'
+    | '/gallery'
     | '/quote'
     | '/freight/ftl'
     | '/freight/industrial'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/coverage'
     | '/fleet'
+    | '/gallery'
     | '/quote'
     | '/freight/ftl'
     | '/freight/industrial'
@@ -335,6 +347,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CoverageRoute: typeof CoverageRoute
   FleetRoute: typeof FleetRoute
+  GalleryRoute: typeof GalleryRoute
   QuoteRoute: typeof QuoteRoute
   FreightFtlRoute: typeof FreightFtlRoute
   FreightIndustrialRoute: typeof FreightIndustrialRoute
@@ -362,6 +375,13 @@ declare module '@tanstack/react-router' {
       path: '/quote'
       fullPath: '/quote'
       preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fleet': {
@@ -543,6 +563,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CoverageRoute: CoverageRoute,
   FleetRoute: FleetRoute,
+  GalleryRoute: GalleryRoute,
   QuoteRoute: QuoteRoute,
   FreightFtlRoute: FreightFtlRoute,
   FreightIndustrialRoute: FreightIndustrialRoute,
