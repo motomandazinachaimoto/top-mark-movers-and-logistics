@@ -225,7 +225,7 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
             </div>
           )}
 
-          {step === 1 && isMove && (
+          {step === 1 && isHouse && (
             <div className="animate-rise grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label className="mb-2 block text-[10px] uppercase tracking-[0.18em] text-white/55">
@@ -251,6 +251,15 @@ function QuoteForm({ onDone }: { onDone?: () => void }) {
               <Field icon={MapPin} label="Pick-up location" value={data.origin} onChange={(v) => setData({ ...data, origin: v })} placeholder="e.g. Kilimani, Nairobi" />
               <Field icon={MapPin} label="New location" value={data.destination} onChange={(v) => setData({ ...data, destination: v })} placeholder="e.g. Karen, Nairobi" />
               <Field icon={Package} label="Moving date" type="date" value={data.date} onChange={(v) => setData({ ...data, date: v })} />
+            </div>
+          )}
+
+          {step === 1 && isOffice && (
+            <div className="animate-rise grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Field icon={Building2} label="Type / nature of business" value={data.businessType} onChange={(v) => setData({ ...data, businessType: v })} placeholder="e.g. Retail shop, Law firm, Clinic" />
+              <Field icon={Package} label="Preferred move date" type="date" value={data.date} onChange={(v) => setData({ ...data, date: v })} />
+              <Field icon={MapPin} label="From (current address)" value={data.origin} onChange={(v) => setData({ ...data, origin: v })} placeholder="e.g. Westlands, Nairobi" />
+              <Field icon={MapPin} label="To (new address)" value={data.destination} onChange={(v) => setData({ ...data, destination: v })} placeholder="e.g. Upper Hill, Nairobi" />
             </div>
           )}
 
