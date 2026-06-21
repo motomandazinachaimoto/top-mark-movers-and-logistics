@@ -21,8 +21,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-const OFFICE_PHONE = "+254719 174393";
-const OFFICE_WHATSAPP = "+254719 174393";
+const OFFICE_PHONE = "+254719174393";
+const OFFICE_WHATSAPP = "254719174393";
 const OFFICE_EMAIL = "info@topmarkmovers.com";
 
 const STEPS = ["Service", "Details", "Contact"] as const;
