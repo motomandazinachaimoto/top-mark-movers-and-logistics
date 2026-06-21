@@ -645,7 +645,7 @@ export const PAGES: Record<string, PageContent> = {
           { title: "What we collect", desc: "Contact details, pickup/delivery addresses, cargo descriptions, and payment information necessary to deliver the service you booked." },
           { title: "How we use it", desc: "To deliver and improve our services, communicate about your booking, handle incidents and meet regulatory obligations." },
           { title: "Who we share with", desc: "Only with subprocessors essential to fulfilling your booking (insurance, customs, banking) under written confidentiality." },
-          { title: "Your rights", desc: "Access, correction, deletion and objection requests can be sent to privacy@topmark.co and are actioned within 30 days." },
+          { title: "Your rights", desc: "Access, correction, deletion and objection requests can be sent to info@topmarkmovers.com and are actioned within 30 days." },
         ],
       },
     ],
