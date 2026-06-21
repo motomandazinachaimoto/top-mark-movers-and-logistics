@@ -28,9 +28,11 @@ const OFFICE_EMAIL = "info@topmarkmovers.com";
 const STEPS = ["Service", "Details", "Contact"] as const;
 const EVENT = "topmark:open-quote";
 
-export function openQuote() {
+export type QuoteKind = "moving" | "office" | "freight";
+
+export function openQuote(opts?: { kind?: QuoteKind }) {
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new Event(EVENT));
+    window.dispatchEvent(new CustomEvent(EVENT, { detail: opts ?? {} }));
   }
 }
 
