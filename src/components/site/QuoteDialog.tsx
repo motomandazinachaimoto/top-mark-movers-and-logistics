@@ -59,9 +59,14 @@ type Method = "call" | "whatsapp" | "email" | "";
 
 export function QuoteDialog() {
   const [open, setOpen] = useState(false);
+  const [presetKind, setPresetKind] = useState<QuoteKind | "">("");
 
   useEffect(() => {
-    const onOpen = () => setOpen(true);
+    const onOpen = (e: Event) => {
+      const detail = (e as CustomEvent).detail as { kind?: QuoteKind } | undefined;
+      setPresetKind(detail?.kind ?? "");
+      setOpen(true);
+    };
     window.addEventListener(EVENT, onOpen);
     return () => window.removeEventListener(EVENT, onOpen);
   }, []);
@@ -73,14 +78,14 @@ export function QuoteDialog() {
         <DialogDescription className="sr-only">
           Tell us about your move and pick how you want us to reply.
         </DialogDescription>
-        <QuoteForm key={open ? "open" : "closed"} onDone={() => setTimeout(() => setOpen(false), 1800)} />
+        <QuoteForm key={open ? `open-${presetKind}` : "closed"} presetKind={presetKind || undefined} onDone={() => setTimeout(() => setOpen(false), 1800)} />
       </DialogContent>
     </Dialog>
   );
 }
 
-function QuoteForm({ onDone }: { onDone?: () => void }) {
-  const [step, setStep] = useState(0);
+function QuoteForm({ onDone, presetKind }: { onDone?: () => void; presetKind?: QuoteKind }) {
+  const [step, setStep] = useState(presetKind ? 1 : 0);
   const [done, setDone] = useState(false);
   const [data, setData] = useState({
     kind: "" as Kind,
