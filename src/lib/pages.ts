@@ -592,17 +592,20 @@ export const PAGES: Record<string, PageContent> = {
     lede:
       "Our 24/7 control tower is staffed by humans who can dispatch a truck, re-route a shipment or escalate an incident — without a chatbot in the way.",
     ctaPrimary: CALL_CTA,
-    ctaSecondary: { label: "Email Operations", href: "mailto:operations@topmark.co" },
+    ctaSecondary: { label: "Email Operations", href: "mailto:info@topmarkmovers.com" },
     blocks: [
       {
         kind: "features",
         eyebrow: "Channels",
         light: true,
         items: [
-          { title: "24/7 Hotline", desc: "+254 715 729 441 — dispatch, incidents, ETA queries." },
-          { title: "Operations Email", desc: "operations@topmark.co — quotes, bookings, documentation." },
-          { title: "WhatsApp Business", desc: "Same number — photos of cargo and locations welcome." },
-          { title: "Head Office", desc: "Industrial Area, Nairobi · Mon–Sat 8am–6pm walk-ins." },
+          { title: "24/7 Hotline", desc: "+254 719 174 393 — dispatch, incidents, ETA queries." },
+          { title: "Operations Email", desc: "info@topmarkmovers.com — quotes, bookings, documentation." },
+          { title: "WhatsApp Business", desc: "+254 719 174 393 — photos of cargo and locations welcome." },
+          { title: "Office Hours", desc: "Monday to Sunday — open 24 hours. Walk-ins welcome at our Nairobi head office." },
+          { title: "Facebook", desc: "facebook.com/topmarkmovers — updates, fleet photos and customer stories." },
+          { title: "Instagram", desc: "instagram.com/topmarkmovers — behind-the-scenes and project highlights." },
+          { title: "TikTok", desc: "tiktok.com/@topmarkmovers — short clips from real moves and freight runs." },
         ],
       },
     ],
