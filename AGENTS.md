@@ -1,10 +1,18 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Topmark Movers and Logistics
+
+A TanStack Start (React + TypeScript) marketing website for Topmark Movers and
+Logistics, styled with Tailwind CSS and shadcn/ui.
+
+## Commands
+
+- `bun install` — install dependencies
+- `bun run dev` — start the dev server
+- `bun run build` — production build
+- `bun run lint` — run ESLint/Prettier checks
+- `bun run format` — auto-format with Prettier
+
+## Layout
+
+- `src/routes/` — file-based routes (`__root.tsx` is the app shell)
+- `src/components/site/` — page sections; `src/components/ui/` — shadcn primitives
+- `src/lib/pages.ts` — structured content rendered by `ContentPage`
