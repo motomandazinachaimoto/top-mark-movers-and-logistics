@@ -1,4 +1,4 @@
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
+import { Truck, Mail, Phone, MapPin, Clock, Facebook, Instagram, Music2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const COLS: { h: string; l: { label: string; to: string }[] }[] = [
