@@ -41,7 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link to="/" className="flex items-center gap-2.5">
-              <img src="/PUBLIC/logo.png" alt="Topmark Movers Logo" className="h-9 w-9 object-contain" />
+              <img src="/PUBLIC/favicon.ico" alt="Topmark Movers Logo" className="h-9 w-9 object-contain" />
               <div>
                 <div className="font-display text-base font-bold text-white">Topmark</div>
                 <div className="text-[10px] uppercase tracking-[0.18em] text-white/55">
