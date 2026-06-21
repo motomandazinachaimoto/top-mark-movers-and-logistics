@@ -1,4 +1,4 @@
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
+import { Truck, Mail, Phone, MapPin, Clock, Facebook, Instagram, Music2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const COLS: { h: string; l: { label: string; to: string }[] }[] = [
@@ -56,15 +56,36 @@ export function Footer() {
               white-glove movements across 47 counties and 80+ global trade lanes.
             </p>
             <div className="mt-6 space-y-2 text-sm text-white/70">
-              <a href="mailto:operations@topmark.co" className="flex items-center gap-2 hover:text-white">
-                <Mail className="h-4 w-4 text-[var(--aqua)]" /> operations@topmark.co
+              <a href="mailto:info@topmarkmovers.com" className="flex items-center gap-2 hover:text-white">
+                <Mail className="h-4 w-4 text-[var(--aqua)]" /> info@topmarkmovers.com
               </a>
-              <a href="tel:+254715729441" className="flex items-center gap-2 hover:text-white">
-                <Phone className="h-4 w-4 text-[var(--aqua)]" /> +254 715 729 441
+              <a href="tel:+254719174393" className="flex items-center gap-2 hover:text-white">
+                <Phone className="h-4 w-4 text-[var(--aqua)]" /> +254 719 174 393
               </a>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-[var(--aqua)]" /> Monday to Sunday · Open 24 hours
+              </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-[var(--aqua)]" /> Industrial Area, Nairobi · Mombasa Port
               </div>
+            </div>
+            <div className="mt-5 flex items-center gap-3">
+              {[
+                { Icon: Facebook, href: "https://web.facebook.com/topmarkmovers/", label: "Facebook" },
+                { Icon: Instagram, href: "https://www.instagram.com/topmarkmovers/", label: "Instagram" },
+                { Icon: Music2, href: "https://www.tiktok.com/@topmarkmovers", label: "TikTok" },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/75 ease-premium transition-all duration-500 hover:border-[var(--aqua)] hover:bg-[rgba(0,242,254,0.08)] hover:text-[var(--aqua)] hover:shadow-glow"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 

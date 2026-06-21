@@ -25,7 +25,7 @@ export type PageContent = {
 };
 
 const QUOTE_CTA = { label: "Get Quote", href: "/quote" };
-const CALL_CTA = { label: "Call 0715 729 441", href: "tel:+254715729441" };
+const CALL_CTA = { label: "Call 0719 174 393", href: "tel:+254719174393" };
 
 export const PAGES: Record<string, PageContent> = {
   about: {
@@ -537,7 +537,7 @@ export const PAGES: Record<string, PageContent> = {
     titleAccent: "moves Kenya.",
     lede:
       "We're always looking for vetted drivers, experienced packers, logistics coordinators and control-tower operators. If you take pride in showing up and finishing the job, we want to meet you.",
-    ctaPrimary: { label: "Email your CV", href: "mailto:careers@topmark.co" },
+    ctaPrimary: { label: "Email your CV", href: "mailto:info@topmarkmovers.com" },
     blocks: [
       {
         kind: "features",
@@ -592,17 +592,20 @@ export const PAGES: Record<string, PageContent> = {
     lede:
       "Our 24/7 control tower is staffed by humans who can dispatch a truck, re-route a shipment or escalate an incident — without a chatbot in the way.",
     ctaPrimary: CALL_CTA,
-    ctaSecondary: { label: "Email Operations", href: "mailto:operations@topmark.co" },
+    ctaSecondary: { label: "Email Operations", href: "mailto:info@topmarkmovers.com" },
     blocks: [
       {
         kind: "features",
         eyebrow: "Channels",
         light: true,
         items: [
-          { title: "24/7 Hotline", desc: "+254 715 729 441 — dispatch, incidents, ETA queries." },
-          { title: "Operations Email", desc: "operations@topmark.co — quotes, bookings, documentation." },
-          { title: "WhatsApp Business", desc: "Same number — photos of cargo and locations welcome." },
-          { title: "Head Office", desc: "Industrial Area, Nairobi · Mon–Sat 8am–6pm walk-ins." },
+          { title: "24/7 Hotline", desc: "+254 719 174 393 — dispatch, incidents, ETA queries." },
+          { title: "Operations Email", desc: "info@topmarkmovers.com — quotes, bookings, documentation." },
+          { title: "WhatsApp Business", desc: "+254 719 174 393 — photos of cargo and locations welcome." },
+          { title: "Office Hours", desc: "Monday to Sunday — open 24 hours. Walk-ins welcome at our Nairobi head office." },
+          { title: "Facebook", desc: "facebook.com/topmarkmovers — updates, fleet photos and customer stories." },
+          { title: "Instagram", desc: "instagram.com/topmarkmovers — behind-the-scenes and project highlights." },
+          { title: "TikTok", desc: "tiktok.com/@topmarkmovers — short clips from real moves and freight runs." },
         ],
       },
     ],
@@ -642,7 +645,7 @@ export const PAGES: Record<string, PageContent> = {
           { title: "What we collect", desc: "Contact details, pickup/delivery addresses, cargo descriptions, and payment information necessary to deliver the service you booked." },
           { title: "How we use it", desc: "To deliver and improve our services, communicate about your booking, handle incidents and meet regulatory obligations." },
           { title: "Who we share with", desc: "Only with subprocessors essential to fulfilling your booking (insurance, customs, banking) under written confidentiality." },
-          { title: "Your rights", desc: "Access, correction, deletion and objection requests can be sent to privacy@topmark.co and are actioned within 30 days." },
+          { title: "Your rights", desc: "Access, correction, deletion and objection requests can be sent to info@topmarkmovers.com and are actioned within 30 days." },
         ],
       },
     ],
