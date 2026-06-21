@@ -6,10 +6,71 @@ import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
 import { openQuote } from "@/components/site/QuoteDialog";
 import type { PageContent, PageBlock } from "@/lib/pages";
+import { useEffect } from "react";
 import heroPort from "@/assets/hero-port.jpg";
 import heroFleet from "@/assets/hero-fleet.jpg";
 import heroAir from "@/assets/hero-air.jpg";
 import heroMovers from "@/assets/hero-movers.jpg";
+
+// SEO Hook for dynamic meta tags
+function useSEO(page: PageContent) {
+  useEffect(() => {
+    // Update page title
+    const fullTitle = `${page.title} ${page.titleAccent || ''} | Topmark Movers and Logistics`;
+    document.title = fullTitle;
+
+    // Update or create meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', page.lede);
+
+    // Update or create meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    const keywords = `${page.eyebrow}, ${page.title}, Topmark Movers, Kenya movers, logistics, freight`;
+    metaKeywords.setAttribute('content', keywords);
+
+    // Update canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `https://topmarkmovers.com${page.slug === 'about' ? '/about' : page.slug === 'contact' ? '/contact' : page.slug === 'quote' ? '/quote' : '/'}`);
+
+    // Update Open Graph tags
+    updateMetaTag('og:title', fullTitle);
+    updateMetaTag('og:description', page.lede);
+    updateMetaTag('og:url', `https://topmarkmovers.com${page.slug === 'about' ? '/about' : page.slug === 'contact' ? '/contact' : page.slug === 'quote' ? '/quote' : '/'}`);
+
+    // Update Twitter tags
+    updateMetaTag('twitter:title', fullTitle);
+    updateMetaTag('twitter:description', page.lede);
+
+    // Cleanup function
+    return () => {
+      // Reset to default when component unmounts
+      document.title = 'Topmark Movers and Logistics | Premium Moving & Freight Services in Kenya';
+    };
+  }, [page]);
+}
+
+function updateMetaTag(property: string, content: string) {
+  const tag = document.querySelector(`meta[property="${property}"]`) || 
+              document.querySelector(`meta[name="${property}"]`);
+  if (tag) {
+    tag.setAttribute('content', content);
+  }
+}
 
 function pickHero(slug: string) {
   const s = slug.toLowerCase();
@@ -225,6 +286,9 @@ function Block({ block }: { block: PageBlock }) {
 
 export function ContentPage({ page }: { page: PageContent }) {
   const ref = useReveal<HTMLDivElement>();
+  
+  // SEO optimization
+  useSEO(page);
   
   if (!page) {
     return (

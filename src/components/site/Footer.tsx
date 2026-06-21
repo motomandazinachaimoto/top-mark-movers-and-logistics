@@ -1,4 +1,4 @@
-import { Truck, Mail, Phone, MapPin, Clock, Facebook, Instagram, Music2 } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Music2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const COLS: { h: string; l: { label: string; to: string }[] }[] = [
@@ -41,9 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-aqua shadow-glow">
-                <Truck className="h-5 w-5 text-[#0A192F]" />
-              </span>
+              <img src="/PUBLIC/logo.png" alt="Topmark Movers Logo" className="h-9 w-9 object-contain" />
               <div>
                 <div className="font-display text-base font-bold text-white">Topmark</div>
                 <div className="text-[10px] uppercase tracking-[0.18em] text-white/55">

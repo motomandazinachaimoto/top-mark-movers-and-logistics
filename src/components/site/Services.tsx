@@ -30,10 +30,10 @@ const TABS: { id: string; label: string; sub: string; items: Service[] }[] = [
     label: "Relocations",
     sub: "Residential, corporate & specialty moves",
     items: [
-      { icon: Home, title: "Residential & Office Moves", desc: "Full-service packing, transit and unpacking for homes and corporate HQs.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
+      { icon: Home, title: "Residential & Office Moves", desc: "Full-service packing, transit and unpacking for homes and corporate HQs.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871710/IMG_7558-1_amdb1w.jpg", kind: "moving" },
       { icon: Package, title: "Custom Packaging", desc: "Engineered crating and protective materials for fragile, oversized loads.", image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32288?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
       { icon: Frame, title: "Fine-Art & Valuables", desc: "Climate-controlled handling for art, antiques, instruments and archives.", image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
-      { icon: Wrench, title: "Specialized Mounting", desc: "Disassembly, mounting and re-installation by trained technical crews.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=70", kind: "office" },
+      { icon: Wrench, title: "Specialized Mounting", desc: "Disassembly, mounting and re-installation by trained technical crews.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871710/IMG_7558-1_amdb1w.jpg", kind: "office" },
     ],
   },
   {

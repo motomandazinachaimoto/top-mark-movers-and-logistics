@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://topmarkmovers.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow specific paths if any
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow important indexing
+Allow: /services/
+Allow: /freight/
+Allow: /global/
+Allow: /blog/

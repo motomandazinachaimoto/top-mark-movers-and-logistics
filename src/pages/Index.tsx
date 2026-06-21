@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Services } from "@/components/site/Services";
 import { Metrics } from "@/components/site/Metrics";
 import { Trust } from "@/components/site/Trust";
 import { CTA } from "@/components/site/CTA";
-import { Footer } from "@/components/site/Footer";
 import { openQuote } from "@/components/site/QuoteDialog";
 import { useReveal } from "@/hooks/use-reveal";
+import { useEffect } from "react";
 import { Truck, ShieldCheck, Clock, Globe2 } from "lucide-react";
 
 const PROMISES = [
@@ -19,9 +18,66 @@ const PROMISES = [
 
 function Index() {
   const ref = useReveal<HTMLDivElement>();
+  
+  // SEO for homepage
+  useEffect(() => {
+    document.title = "Topmark Movers and Logistics | Premium Moving & Freight Services in Kenya";
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Kenya's trusted movers and logistics company. Professional residential moving, office relocation, freight forwarding, and supply chain solutions across 47 counties and 80+ global trade lanes. Get a free quote today.");
+    }
+    
+    // Update canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://topmarkmovers.com/');
+    }
+    
+    // Update Open Graph tags
+    updateMetaTag('og:title', 'Topmark Movers and Logistics | Premium Moving & Freight Services in Kenya');
+    updateMetaTag('og:url', 'https://topmarkmovers.com/');
+    
+    // Update Twitter tags
+    updateMetaTag('twitter:title', 'Topmark Movers and Logistics | Premium Moving & Freight Services in Kenya');
+    updateMetaTag('twitter:url', 'https://topmarkmovers.com/');
+    
+    // Add Homepage Schema
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Topmark Movers and Logistics",
+      "url": "https://topmarkmovers.com",
+      "description": "Kenya's trusted movers and logistics company providing residential moving, office relocation, freight forwarding, and supply chain solutions",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://topmarkmovers.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    });
+    document.head.appendChild(schema);
+    
+    return () => {
+      // Cleanup schema
+      if (document.head.contains(schema)) {
+        document.head.removeChild(schema);
+      }
+    };
+  }, []);
+
+  function updateMetaTag(property: string, content: string) {
+    const tag = document.querySelector(`meta[property="${property}"]`) || 
+                document.querySelector(`meta[name="${property}"]`);
+    if (tag) {
+      tag.setAttribute('content', content);
+    }
+  }
+  
   return (
-    <div ref={ref} className="relative min-h-screen overflow-x-clip bg-background text-foreground">
-      <Header />
+    <div ref={ref}>
       <main>
         <Hero />
         <Services />
@@ -72,7 +128,6 @@ function Index() {
         <Trust />
         <CTA />
       </main>
-      <Footer />
     </div>
   );
 }

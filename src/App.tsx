@@ -74,14 +74,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Layout><Index /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/quote" element={<Layout><Quote /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/careers" element={<Layout><Careers /></Layout>} />
         <Route path="/coverage" element={<Layout><Coverage /></Layout>} />
         <Route path="/fleet" element={<Layout><Fleet /></Layout>} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />
         
         {/* Services routes */}

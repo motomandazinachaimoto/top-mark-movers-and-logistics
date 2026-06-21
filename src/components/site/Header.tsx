@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Truck, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 import { QuoteButton, QuoteDialog, openQuote } from "@/components/site/QuoteDialog";
 
@@ -8,6 +8,7 @@ const NAV = [
   { label: "Services", to: "/services" },
   { label: "Truck Hire", to: "/freight/truck-hire" },
   { label: "Gallery", to: "/gallery" },
+  { label: "Blog", to: "/blog" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ] as const;
@@ -35,9 +36,7 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           {/* Brand — full name visible on mobile too */}
           <Link to="/" className="flex min-w-0 flex-1 items-center gap-2.5">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-aqua shadow-glow">
-              <Truck className="h-5 w-5 text-[#0A192F]" />
-            </span>
+            <img src="/PUBLIC/logo.png" alt="Topmark Movers Logo" className="h-9 w-9 shrink-0 object-contain" />
             <span className="flex min-w-0 flex-col leading-tight">
               <span className="truncate font-display text-sm font-bold tracking-tight text-white sm:text-base">
                 Topmark Movers
