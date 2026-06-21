@@ -63,56 +63,105 @@ function Block({ block }: { block: PageBlock }) {
 
         {block.kind === "features" && block.items && (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {block.items.map((it, i) => (
-              <div
-                key={it.title}
-                className={`reveal rounded-2xl p-6 ${
-                  light
-                    ? "card-light card-light-hover"
-                    : "glass tilt-card tilt-card-hover"
-                }`}
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                <div
-                  className={`grid h-10 w-10 place-items-center rounded-xl ${
-                    light
-                      ? "bg-gradient-aqua text-[#0A192F]"
-                      : "border border-white/10 bg-white/5 text-[var(--aqua)]"
-                  }`}
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </div>
-                <div
-                  className={`mt-4 font-display text-lg font-semibold ${
-                    light ? "text-[#0A192F]" : "text-white"
-                  }`}
-                >
-                  {it.title}
-                </div>
-                <div
-                  className={`mt-2 text-sm leading-relaxed ${
-                    light ? "text-[#0A192F]/70" : "text-white/65"
-                  }`}
-                >
-                  {it.desc}
-                </div>
-                {it.bullets && (
-                  <ul className="mt-4 space-y-1.5">
-                    {it.bullets.map((b) => (
-                      <li
-                        key={b}
-                        className={`flex items-start gap-2 text-sm ${
-                          light ? "text-[#0A192F]/75" : "text-white/70"
+            {block.items.map((it, i) => {
+              const hasImage = !!it.image;
+              const clickable = !!it.quoteKind;
+              const cardCls = `reveal group relative flex flex-col overflow-hidden rounded-2xl text-left ease-premium transition-transform duration-500 ${
+                light ? "card-light card-light-hover" : "glass tilt-card tilt-card-hover"
+              } ${clickable ? "cursor-pointer" : ""}`;
+              const onClick = clickable ? () => openQuote({ kind: it.quoteKind }) : undefined;
+              const inner = (
+                <>
+                  {hasImage && (
+                    <div className="relative h-44 w-full overflow-hidden">
+                      <img
+                        src={it.image}
+                        alt={it.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover ease-premium transition-transform duration-[1400ms] group-hover:scale-110"
+                      />
+                      <div
+                        className={`absolute inset-0 ${
+                          light
+                            ? "bg-gradient-to-t from-white via-white/30 to-transparent"
+                            : "bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent"
+                        }`}
+                      />
+                    </div>
+                  )}
+                  <div className="relative flex flex-1 flex-col p-6">
+                    {!hasImage && (
+                      <div
+                        className={`grid h-10 w-10 place-items-center rounded-xl ${
+                          light
+                            ? "bg-gradient-aqua text-[#0A192F]"
+                            : "border border-white/10 bg-white/5 text-[var(--aqua)]"
                         }`}
                       >
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--aqua-deep)]" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+                        <ArrowRight className="h-5 w-5" />
+                      </div>
+                    )}
+                    <div
+                      className={`${hasImage ? "" : "mt-4"} font-display text-lg font-semibold ${
+                        light ? "text-[#0A192F]" : "text-white"
+                      }`}
+                    >
+                      {it.title}
+                    </div>
+                    <div
+                      className={`mt-2 text-sm leading-relaxed ${
+                        light ? "text-[#0A192F]/70" : "text-white/65"
+                      }`}
+                    >
+                      {it.desc}
+                    </div>
+                    {it.bullets && (
+                      <ul className="mt-4 space-y-1.5">
+                        {it.bullets.map((b) => (
+                          <li
+                            key={b}
+                            className={`flex items-start gap-2 text-sm ${
+                              light ? "text-[#0A192F]/75" : "text-white/70"
+                            }`}
+                          >
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--aqua-deep)]" />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {clickable && (
+                      <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--aqua-deep)] ease-premium transition-all duration-500 group-hover:gap-2.5">
+                        Get a quote <ArrowRight className="h-3.5 w-3.5" />
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+              return (
+                <div
+                  key={it.title}
+                  className={cardCls}
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                  onClick={onClick}
+                  onKeyDown={
+                    clickable
+                      ? (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            onClick?.();
+                          }
+                        }
+                      : undefined
+                  }
+                  role={clickable ? "button" : undefined}
+                  tabIndex={clickable ? 0 : undefined}
+                  aria-label={clickable ? `Get a quote for ${it.title}` : undefined}
+                >
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         )}
 
