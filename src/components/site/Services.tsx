@@ -114,19 +114,40 @@ export function Services() {
           {current.items.map((s, i) => (
             <article
               key={s.title}
-              className="glass tilt-card tilt-card-hover animate-rise group relative overflow-hidden rounded-2xl p-6"
+              className="glass tilt-card tilt-card-hover animate-rise group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl text-left"
               style={{ animationDelay: `${i * 90}ms` }}
+              onClick={() => openQuote({ kind: s.kind })}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openQuote({ kind: s.kind });
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Get a quote for ${s.title}`}
             >
-              <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-aqua opacity-0 blur-3xl ease-premium transition-opacity duration-700 group-hover:opacity-20" />
-              <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-white/5 text-[var(--aqua)]">
-                <s.icon className="h-6 w-6" />
+              <div className="relative h-40 w-full overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover ease-premium transition-transform duration-[1400ms] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent" />
+                <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-[rgba(10,25,47,0.65)] text-[var(--aqua)] backdrop-blur-md">
+                  <s.icon className="h-5 w-5" />
+                </div>
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-white">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/65">{s.desc}</p>
-              <div className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--aqua)] opacity-0 ease-premium transition-opacity duration-500 group-hover:opacity-100">
-                Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+              <div className="relative flex flex-1 flex-col p-6">
+                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-aqua opacity-0 blur-3xl ease-premium transition-opacity duration-700 group-hover:opacity-20" />
+                <h3 className="font-display text-lg font-semibold text-white">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/65">{s.desc}</p>
+                <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--aqua)] ease-premium transition-all duration-500 group-hover:gap-2.5">
+                  Get a quote <ArrowUpRight className="h-3.5 w-3.5" />
+                </div>
               </div>
             </article>
           ))}
