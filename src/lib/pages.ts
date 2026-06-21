@@ -1,7 +1,15 @@
 // Shared page content for all secondary pages.
 // Each page is rendered by <ContentPage /> using this structured data.
 
-export type PageFeature = { title: string; desc: string; bullets?: string[] };
+export type QuoteKind = "moving" | "office" | "freight";
+export type PageFeature = {
+  title: string;
+  desc: string;
+  bullets?: string[];
+  image?: string;
+  href?: string;
+  quoteKind?: QuoteKind;
+};
 export type PageBlock = {
   kind: "features" | "highlight" | "checklist" | "stats";
   eyebrow?: string;
