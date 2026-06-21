@@ -1,7 +1,15 @@
 // Shared page content for all secondary pages.
 // Each page is rendered by <ContentPage /> using this structured data.
 
-export type PageFeature = { title: string; desc: string; bullets?: string[] };
+export type QuoteKind = "moving" | "office" | "freight";
+export type PageFeature = {
+  title: string;
+  desc: string;
+  bullets?: string[];
+  image?: string;
+  href?: string;
+  quoteKind?: QuoteKind;
+};
 export type PageBlock = {
   kind: "features" | "highlight" | "checklist" | "stats";
   eyebrow?: string;
@@ -127,10 +135,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "B2C & B2B Moves",
         light: true,
         items: [
-          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup. Available at /services/residential." },
-          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT & file handling. /services/office" },
-          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates. /services/packing" },
-          { title: "Mounting & Handyman", desc: "TVs, art, mirrors, shelving on arrival. /services/mounting" },
+          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70", href: "/services/residential", quoteKind: "moving" },
+          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=70", href: "/services/office", quoteKind: "office" },
+          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32288?auto=format&fit=crop&w=1200&q=70", href: "/services/packing", quoteKind: "moving" },
+          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=70", href: "/services/mounting", quoteKind: "office" },
         ],
       },
       {
@@ -138,11 +146,11 @@ export const PAGES: Record<string, PageContent> = {
         eyebrow: "Road Freight & Haulage",
         heading: "Commercial transport",
         items: [
-          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit. /freight/ftl" },
-          { title: "LTL & Groupage", desc: "Consolidated freight, lower cost. /freight/ltl" },
-          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks, box bodies for lease. /freight/truck-hire" },
-          { title: "Petroleum & Bulk Liquid", desc: "ERC-licensed tanker transport. /freight/petroleum" },
-          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials. /freight/industrial" },
+          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit for sealed door-to-door movements.", image: "https://images.unsplash.com/photo-1586191582056-b5d6147053e9?auto=format&fit=crop&w=1200&q=70", href: "/freight/ftl", quoteKind: "freight" },
+          { title: "LTL & Groupage", desc: "Consolidated freight on daily corridors — lower cost, scheduled lanes.", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=70", href: "/freight/ltl", quoteKind: "freight" },
+          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks and box bodies available for short or long lease.", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=70", href: "/freight/truck-hire", quoteKind: "freight" },
+          { title: "Petroleum & Bulk Liquid", desc: "ERC-licensed tanker transport with certified drivers and tracked tankers.", image: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=70", href: "/freight/petroleum", quoteKind: "freight" },
+          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials with end-to-end visibility.", image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=70", href: "/freight/industrial", quoteKind: "freight" },
         ],
       },
       {
@@ -151,10 +159,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "Intermodal & specialized",
         light: true,
         items: [
-          { title: "Ocean Freight (FCL / LCL)", desc: "Door-to-door global container logistics. /global/ocean" },
-          { title: "Air Cargo", desc: "Expedited international transit for time-critical cargo. /global/air" },
-          { title: "Cold Chain", desc: "Pharma, perishables, temperature-controlled. /global/cold-chain" },
-          { title: "Project & OOG Cargo", desc: "Heavy haul for oversized industrial equipment. /global/project-cargo" },
+          { title: "Ocean Freight (FCL / LCL)", desc: "Door-to-door global container logistics on the world's major lanes.", image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=70", href: "/global/ocean", quoteKind: "freight" },
+          { title: "Air Cargo", desc: "Expedited international transit for time-critical and high-value cargo.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=70", href: "/global/air", quoteKind: "freight" },
+          { title: "Cold Chain", desc: "Temperature-validated transport for pharma, perishables and biotech.", image: "https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1200&q=70", href: "/global/cold-chain", quoteKind: "freight" },
+          { title: "Project & OOG Cargo", desc: "Heavy haul for oversized, out-of-gauge industrial equipment and turnkey projects.", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=70", href: "/global/project-cargo", quoteKind: "freight" },
         ],
       },
     ],
