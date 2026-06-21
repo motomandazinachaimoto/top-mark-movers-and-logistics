@@ -30,9 +30,13 @@ const EVENT = "topmark:open-quote";
 
 export type QuoteKind = "moving" | "office" | "freight";
 
-export function openQuote(opts?: { kind?: QuoteKind }) {
+export function openQuote(opts?: { kind?: QuoteKind } | unknown) {
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent(EVENT, { detail: opts ?? {} }));
+    const detail =
+      opts && typeof opts === "object" && "kind" in (opts as Record<string, unknown>)
+        ? { kind: (opts as { kind?: QuoteKind }).kind }
+        : {};
+    window.dispatchEvent(new CustomEvent(EVENT, { detail }));
   }
 }
 
