@@ -14,8 +14,15 @@ import {
   Construction,
   ArrowUpRight,
 } from "lucide-react";
+import { openQuote, type QuoteKind } from "@/components/site/QuoteDialog";
 
-type Service = { icon: React.ComponentType<{ className?: string }>; title: string; desc: string };
+type Service = {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  desc: string;
+  image: string;
+  kind: QuoteKind;
+};
 
 const TABS: { id: string; label: string; sub: string; items: Service[] }[] = [
   {
@@ -23,10 +30,10 @@ const TABS: { id: string; label: string; sub: string; items: Service[] }[] = [
     label: "Relocations",
     sub: "Residential, corporate & specialty moves",
     items: [
-      { icon: Home, title: "Residential & Office Moves", desc: "Full-service packing, transit and unpacking for homes and corporate HQs." },
-      { icon: Package, title: "Custom Packaging", desc: "Engineered crating and protective materials for fragile, oversized loads." },
-      { icon: Frame, title: "Fine-Art & Valuables", desc: "Climate-controlled handling for art, antiques, instruments and archives." },
-      { icon: Wrench, title: "Specialized Mounting", desc: "Disassembly, mounting and re-installation by trained technical crews." },
+      { icon: Home, title: "Residential & Office Moves", desc: "Full-service packing, transit and unpacking for homes and corporate HQs.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
+      { icon: Package, title: "Custom Packaging", desc: "Engineered crating and protective materials for fragile, oversized loads.", image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32288?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
+      { icon: Frame, title: "Fine-Art & Valuables", desc: "Climate-controlled handling for art, antiques, instruments and archives.", image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?auto=format&fit=crop&w=1200&q=70", kind: "moving" },
+      { icon: Wrench, title: "Specialized Mounting", desc: "Disassembly, mounting and re-installation by trained technical crews.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=70", kind: "office" },
     ],
   },
   {
@@ -34,10 +41,10 @@ const TABS: { id: string; label: string; sub: string; items: Service[] }[] = [
     label: "Fleet & Road Freight",
     sub: "FTL, LTL, petroleum & hazardous bulk",
     items: [
-      { icon: Truck, title: "Trucks for Hire", desc: "On-demand vehicles from 1-ton vans to 40-ton articulated tractors." },
-      { icon: Boxes, title: "Full Truckload (FTL)", desc: "Dedicated rigs for door-to-door, sealed, single-customer movements." },
-      { icon: Layers, title: "LTL Groupage", desc: "Cost-efficient industrial consolidation with daily scheduled corridors." },
-      { icon: Fuel, title: "Petroleum & HAZMAT", desc: "DOT-compliant bulk haulage with certified drivers and tracked tankers." },
+      { icon: Truck, title: "Trucks for Hire", desc: "On-demand vehicles from 1-ton vans to 40-ton articulated tractors.", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Boxes, title: "Full Truckload (FTL)", desc: "Dedicated rigs for door-to-door, sealed, single-customer movements.", image: "https://images.unsplash.com/photo-1586191582056-b5d6147053e9?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Layers, title: "LTL Groupage", desc: "Cost-efficient industrial consolidation with daily scheduled corridors.", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Fuel, title: "Petroleum & HAZMAT", desc: "DOT-compliant bulk haulage with certified drivers and tracked tankers.", image: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
     ],
   },
   {
@@ -45,10 +52,10 @@ const TABS: { id: string; label: string; sub: string; items: Service[] }[] = [
     label: "Global Freight",
     sub: "Ocean, air & intermodal solutions",
     items: [
-      { icon: Ship, title: "Ocean FCL / LCL", desc: "Direct FCL allocations and reliable LCL consolidations on major lanes." },
-      { icon: Plane, title: "Air Cargo Consolidation", desc: "Priority, deferred and charter air with global IATA partners." },
-      { icon: Snowflake, title: "Cold Chain Logistics", desc: "Temperature-validated transport for pharma, perishables and biotech." },
-      { icon: Construction, title: "Project & OOG Cargo", desc: "Out-of-gauge, breakbulk and turnkey engineering project movements." },
+      { icon: Ship, title: "Ocean FCL / LCL", desc: "Direct FCL allocations and reliable LCL consolidations on major lanes.", image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Plane, title: "Air Cargo Consolidation", desc: "Priority, deferred and charter air with global IATA partners.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Snowflake, title: "Cold Chain Logistics", desc: "Temperature-validated transport for pharma, perishables and biotech.", image: "https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
+      { icon: Construction, title: "Project & OOG Cargo", desc: "Out-of-gauge, breakbulk and turnkey engineering project movements.", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=70", kind: "freight" },
     ],
   },
 ];
