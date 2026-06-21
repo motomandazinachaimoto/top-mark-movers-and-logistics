@@ -1,5 +1,5 @@
 import { Truck, Mail, Phone, MapPin, Clock, Facebook, Instagram, Music2 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 
 const COLS: { h: string; l: { label: string; to: string }[] }[] = [
   {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Truck, Menu, X } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
 import { QuoteButton, QuoteDialog, openQuote } from "@/components/site/QuoteDialog";
 
 const NAV = [
@@ -51,14 +51,14 @@ export function Header() {
           {/* Desktop nav — simple flat links, no dropdowns */}
           <nav className="hidden items-center gap-1 lg:flex">
             {NAV.map((n) => (
-              <Link
+              <NavLink
                 key={n.to}
                 to={n.to}
-                activeOptions={{ exact: n.to === "/" }}
+                end={n.to === "/"}
                 className="rounded-full px-4 py-2 text-sm font-medium text-white/75 ease-premium transition-colors duration-300 hover:bg-white/5 hover:text-white data-[status=active]:bg-white/[0.06] data-[status=active]:text-white"
               >
                 {n.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
@@ -92,15 +92,15 @@ export function Header() {
           <div className="mx-4 mt-3 rounded-2xl border border-white/10 bg-[rgba(10,25,47,0.96)] p-3 shadow-2xl backdrop-blur-2xl">
             <div className="grid gap-1">
               {NAV.map((n) => (
-                <Link
+                <NavLink
                   key={n.to}
                   to={n.to}
-                  activeOptions={{ exact: n.to === "/" }}
+                  end={n.to === "/"}
                   onClick={() => setOpen(false)}
                   className="rounded-xl px-4 py-3 text-sm font-medium text-white/85 transition-colors hover:bg-white/5 data-[status=active]:bg-white/[0.08] data-[status=active]:text-white"
                 >
                   {n.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
             <button

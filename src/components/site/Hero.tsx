@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, PlayCircle } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { openQuote } from "@/components/site/QuoteDialog";
 import { useTypewriter } from "@/hooks/use-typewriter";
 import heroPort from "@/assets/hero-port.jpg";

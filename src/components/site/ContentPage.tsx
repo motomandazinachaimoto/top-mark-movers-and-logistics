@@ -2,7 +2,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
 import { useReveal } from "@/hooks/use-reveal";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
 import { openQuote } from "@/components/site/QuoteDialog";
 import type { PageContent, PageBlock } from "@/lib/pages";

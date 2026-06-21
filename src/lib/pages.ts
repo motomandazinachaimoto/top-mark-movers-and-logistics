@@ -383,6 +383,39 @@ export const PAGES: Record<string, PageContent> = {
     ],
   },
 
+  "freight-truck-hire": {
+    slug: "freight/truck-hire",
+    eyebrow: "Fleet Rental",
+    title: "Truck hire & fleet rental,",
+    titleAccent: "for short or long term.",
+    lede:
+      "Canters, open trucks, box bodies, prime movers and trailers available for daily, weekly or monthly rental — with or without drivers, with or without fuel.",
+    ctaPrimary: QUOTE_CTA,
+    blocks: [
+      {
+        kind: "features",
+        eyebrow: "Available assets",
+        light: true,
+        items: [
+          { title: "Light commercial (1-3T)", desc: "Closed vans for parcel delivery and last-mile logistics." },
+          { title: "Mid-size (3.5-7T)", desc: "Canters and box bodies for urban moves and furniture transport." },
+          { title: "Heavy (10-40T)", desc: "Prime movers with curtainsiders, flatbeds and skeletal trailers." },
+          { title: "Specialized", desc: "Reefers, tankers, low-loaders and crane-mounted trucks on request." },
+        ],
+      },
+      {
+        kind: "checklist",
+        heading: "Rental options",
+        bullets: [
+          "Dry hire (vehicle only) or wet hire (with driver)",
+          "Short-term (daily/weekly) or long-term (monthly/annual) contracts",
+          "Self-drive or chauffeur-driven options",
+          "Fuel inclusive or fuel-exclusive packages",
+        ],
+      },
+    ],
+  },
+
   "global-ocean": {
     slug: "global/ocean",
     eyebrow: "Ocean Freight",

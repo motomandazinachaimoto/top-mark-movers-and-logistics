@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { openQuote } from "@/components/site/QuoteDialog";
 
 export function CTA() {
