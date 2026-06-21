@@ -537,7 +537,7 @@ export const PAGES: Record<string, PageContent> = {
     titleAccent: "moves Kenya.",
     lede:
       "We're always looking for vetted drivers, experienced packers, logistics coordinators and control-tower operators. If you take pride in showing up and finishing the job, we want to meet you.",
-    ctaPrimary: { label: "Email your CV", href: "mailto:careers@topmark.co" },
+    ctaPrimary: { label: "Email your CV", href: "mailto:info@topmarkmovers.com" },
     blocks: [
       {
         kind: "features",
