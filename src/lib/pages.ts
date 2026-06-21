@@ -25,7 +25,7 @@ export type PageContent = {
 };
 
 const QUOTE_CTA = { label: "Get Quote", href: "/quote" };
-const CALL_CTA = { label: "Call 0715 729 441", href: "tel:+254715729441" };
+const CALL_CTA = { label: "Call 0719 174 393", href: "tel:+254719174393" };
 
 export const PAGES: Record<string, PageContent> = {
   about: {
