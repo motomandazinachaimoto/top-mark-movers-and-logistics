@@ -81,7 +81,7 @@ function App() {
         <Route path="/careers" element={<Layout><Careers /></Layout>} />
         <Route path="/coverage" element={<Layout><Coverage /></Layout>} />
         <Route path="/fleet" element={<Layout><Fleet /></Layout>} />
-        <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />
         
         {/* Services routes */}

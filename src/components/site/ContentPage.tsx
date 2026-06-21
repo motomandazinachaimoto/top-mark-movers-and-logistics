@@ -225,6 +225,29 @@ function Block({ block }: { block: PageBlock }) {
 
 export function ContentPage({ page }: { page: PageContent }) {
   const ref = useReveal<HTMLDivElement>();
+  
+  if (!page) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background px-4">
+        <div className="max-w-md text-center">
+          <h1 className="text-7xl font-bold text-foreground">Error</h1>
+          <h2 className="mt-4 text-xl font-semibold text-foreground">Page content not found</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            The page content could not be loaded. Please contact support if this issue persists.
+          </p>
+          <div className="mt-6">
+            <a
+              href="/"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Go home
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   const heroImg = pickHero(page.slug);
   return (
     <div ref={ref} className="relative min-h-screen overflow-x-clip bg-background text-foreground">
