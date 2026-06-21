@@ -12,23 +12,21 @@ export function useTypewriter(text: string, speed = 22, startDelay = 600) {
     setOut("");
     setDone(false);
     let i = 0;
+    let intervalId: number | undefined;
     const start = window.setTimeout(() => {
-      const id = window.setInterval(() => {
+      intervalId = window.setInterval(() => {
         i += 1;
         setOut(text.slice(0, i));
         if (i >= text.length) {
-          window.clearInterval(id);
+          window.clearInterval(intervalId);
           setDone(true);
         }
       }, speed);
-      // attach for cleanup
-      (start as unknown as { _id: number })._id = id;
     }, startDelay);
 
     return () => {
       window.clearTimeout(start);
-      const id = (start as unknown as { _id?: number })._id;
-      if (id) window.clearInterval(id);
+      if (intervalId) window.clearInterval(intervalId);
     };
   }, [text, speed, startDelay]);
 
