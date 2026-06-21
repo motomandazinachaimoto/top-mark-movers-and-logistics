@@ -88,7 +88,7 @@ function QuoteForm({ onDone, presetKind }: { onDone?: () => void; presetKind?: Q
   const [step, setStep] = useState(presetKind ? 1 : 0);
   const [done, setDone] = useState(false);
   const [data, setData] = useState({
-    kind: "" as Kind,
+    kind: (presetKind ?? "") as Kind,
     // House moving
     bedrooms: "",
     // Office / commercial business
