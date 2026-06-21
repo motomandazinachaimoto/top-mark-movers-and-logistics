@@ -130,10 +130,10 @@ function TruckHirePage() {
                 Get Quote
               </button>
               <a
-                href="tel:+254715729441"
+                href="tel:+254719174393"
                 className="btn-ghost btn-ghost-hover"
               >
-                Call 0715 729 441
+                Call 0719 174 393
               </a>
             </div>
           </div>
@@ -222,7 +222,7 @@ function TruckHirePage() {
                     Get Quote
                   </button>
                   <a
-                    href="tel:+254715729441"
+                    href="tel:+254719174393"
                     className="btn-ghost btn-ghost-hover"
                   >
                     <Clock className="h-4 w-4" /> 24/7 Dispatch
