@@ -110,14 +110,9 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/45 sm:flex-row sm:items-center">
           <div>© {new Date().getFullYear()} Topmark Movers and Logistics. All rights reserved.</div>
-          <a
-            href="https://lestaz.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors duration-300 hover:text-white"
-          >
-            Built and powered by <span className="font-semibold text-white/70">Lestaz Tech</span>
-          </a>
+          <div className="transition-colors duration-300 hover:text-white">
+            Powered by <span className="font-semibold text-white/70">TOP MARK</span>
+          </div>
           <div className="flex gap-6">
             <Link to="/legal/privacy" className="hover:text-white">Privacy</Link>
             <Link to="/legal/terms" className="hover:text-white">Terms</Link>
