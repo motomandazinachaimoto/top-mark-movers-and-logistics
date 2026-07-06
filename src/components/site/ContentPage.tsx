@@ -1,4 +1,5 @@
 import { CTA } from "@/components/site/CTA";
+import { useReveal } from "@/hooks/use-reveal";
 import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
 import { openQuote } from "@/components/site/QuoteDialog";
@@ -282,6 +283,8 @@ function Block({ block }: { block: PageBlock }) {
 }
 
 export function ContentPage({ page }: { page: PageContent }) {
+  const ref = useReveal<HTMLDivElement>();
+  
   // SEO optimization
   useSEO(page);
   
@@ -309,7 +312,7 @@ export function ContentPage({ page }: { page: PageContent }) {
   
   const heroImg = pickHero(page.slug);
   return (
-    <>
+    <div ref={ref}>
       {/* Hero with cinematic background */}
       <section className="relative isolate flex min-h-[78svh] items-center overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
         <div className="absolute inset-0 -z-10">
@@ -370,7 +373,7 @@ export function ContentPage({ page }: { page: PageContent }) {
       ))}
 
       <CTA />
-    </>
+    </div>
   );
 }
 
