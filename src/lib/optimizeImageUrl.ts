@@ -1,142 +1,82 @@
 /**
  * Global image URL optimizer
- * Handles HEIC/HEIF conversion and Cloudinary format optimization.
+ * Uses Cloudinary server-side transforms + browser prefetch cache for fast loading.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const heicConversionCache = new Map<string, string>();
-let heic2anyLoaded = false;
+// ── URL optimization cache ──────────────────────────────────────────────────
+// Avoid recomputing the same string transform on every render.
+const urlCache = new Map<string, string>();
 
-declare global {
-  interface Window {
-    heic2any?: (options: {
-      blob: Blob;
-      toType: string;
-      quality?: number;
-    }) => Promise<Blob | Blob[]>;
-  }
-}
-
-async function loadHeic2Any(): Promise<boolean> {
-  if (heic2anyLoaded) return true;
-
-  try {
-    if (window.heic2any) {
-      heic2anyLoaded = true;
-      return true;
-    }
-
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js";
-      script.async = true;
-      script.onload = () => {
-        heic2anyLoaded = true;
-        resolve(true);
-      };
-      script.onerror = () => {
-        console.warn("Failed to load heic2any library");
-        resolve(false);
-      };
-      document.head.appendChild(script);
-    });
-  } catch (error) {
-    console.error("Error loading heic2any:", error);
-    return false;
-  }
-}
-
-async function convertHeicToJpeg(blob: Blob): Promise<Blob> {
-  const loaded = await loadHeic2Any();
-  if (!loaded || !window.heic2any) {
-    throw new Error("heic2any library not available");
-  }
-
-  const converted = await window.heic2any({
-    blob,
-    toType: "image/jpeg",
-    quality: 0.9,
-  });
-
-  return Array.isArray(converted) ? converted[0] : converted;
-}
-
-async function convertExternalHeic(url: string): Promise<string> {
-  if (heicConversionCache.has(url)) {
-    return heicConversionCache.get(url)!;
-  }
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Image fetch failed with status ${response.status}`);
-    }
-
-    const blob = await response.blob();
-    const jpegBlob = await convertHeicToJpeg(blob);
-    const objectUrl = URL.createObjectURL(jpegBlob);
-    heicConversionCache.set(url, objectUrl);
-    return objectUrl;
-  } catch (error) {
-    console.error(`Failed to convert HEIC image: ${url}`, error);
-    return url;
-  }
-}
-
+/**
+ * Injects Cloudinary transforms into a URL:
+ *  - f_auto  → serves WebP on Chrome/Firefox, JPEG on Safari (handles HEIC server-side)
+ *  - q_auto  → Cloudinary picks optimal quality (typically 50–70% smaller files)
+ *  - w_1200  → caps width at 1200px (cards never need full resolution)
+ */
 export function optimizeImageUrl(url: string): string {
   if (!url) return "";
+  if (urlCache.has(url)) return urlCache.get(url)!;
 
+  let result = url;
   if (url.includes("/image/upload/")) {
-    if (url.includes("/image/upload/f_auto/")) return url;
-    return url.replace("/image/upload/", "/image/upload/f_auto/");
+    result = url.includes("/image/upload/f_auto")
+      ? url
+      : url.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/");
   }
 
-  return url;
+  urlCache.set(url, result);
+  return result;
 }
 
-export function useHeicImage(url: string) {
-  const [imageSrc, setImageSrc] = useState<string>(optimizeImageUrl(url));
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+// ── Background prefetch ─────────────────────────────────────────────────────
+// Track which URLs have already been prefetched so we only do it once globally.
+const prefetched = new Set<string>();
 
+/**
+ * Silently loads images into the browser cache in the background.
+ * When the real <img> tag renders later, the browser serves from cache instantly.
+ */
+export function prefetchImages(urls: string[]): void {
+  for (const raw of urls) {
+    if (!raw) continue;
+    const url = optimizeImageUrl(raw);
+    if (prefetched.has(url)) continue;
+    prefetched.add(url);
+
+    // Use <link rel="prefetch"> when available — lowest priority, non-blocking
+    if (typeof document !== "undefined") {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.as = "image";
+      link.href = url;
+      document.head.appendChild(link);
+    }
+  }
+}
+
+/**
+ * Hook: prefetches a list of image URLs when the component mounts.
+ * Use this at the top of any component that will render multiple images.
+ *
+ * @example
+ *   usePrefetchImages(items.map(i => i.image));
+ */
+export function usePrefetchImages(urls: (string | undefined)[]): void {
   useEffect(() => {
-    if (!url) {
-      setImageSrc("");
-      return;
-    }
-
-    const optimizedUrl = optimizeImageUrl(url);
-    const isHeic = /\.(heic|heif)(\?|#|$)/i.test(url);
-    const isCloudinary = optimizedUrl.includes("/image/upload/");
-    let canceled = false;
-
-    if (isHeic && !isCloudinary) {
-      setIsLoading(true);
-      convertExternalHeic(url)
-        .then((convertedUrl) => {
-          if (canceled) return;
-          setImageSrc(convertedUrl);
-          setError(null);
-        })
-        .catch((err: unknown) => {
-          if (canceled) return;
-          setError(err instanceof Error ? err : new Error("Unknown conversion error"));
-          setImageSrc(url);
-        })
-        .finally(() => {
-          if (!canceled) setIsLoading(false);
-        });
-    } else {
-      setImageSrc(optimizedUrl);
-      setIsLoading(false);
-      setError(null);
-    }
-
-    return () => {
-      canceled = true;
-    };
-  }, [url]);
-
-  return { imageSrc, isLoading, error };
+    prefetchImages(urls.filter(Boolean) as string[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // intentionally run once on mount only
 }
+
+/**
+ * Drop-in replacement for the old useHeicImage hook.
+ * Purely synchronous — no fetch, no heic2any, no hanging.
+ * Cloudinary does all format conversion on their CDN edge.
+ */
+export function useHeicImage(url: string) {
+  const imageSrc = optimizeImageUrl(url);
+  return { imageSrc, isLoading: false, error: null };
+}
+

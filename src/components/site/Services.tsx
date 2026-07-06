@@ -15,7 +15,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { openQuote, type QuoteKind } from "@/components/site/QuoteDialog";
-import { useHeicImage } from "@/lib/optimizeImageUrl";
+import { useHeicImage, usePrefetchImages } from "@/lib/optimizeImageUrl";
 
 type Service = {
   icon: React.ComponentType<{ className?: string }>;
@@ -120,6 +120,9 @@ function ServiceCard({ service: s, index: i }: { service: Service; index: number
 export function Services() {
   const [active, setActive] = useState(TABS[0].id);
   const current = TABS.find((t) => t.id === active)!;
+
+  // Prefetch ALL tab images on mount so switching tabs feels instant
+  usePrefetchImages(TABS.flatMap((t) => t.items.map((s) => s.image)));;
 
   return (
     <section id="services" className="relative bg-white py-24 lg:py-32">

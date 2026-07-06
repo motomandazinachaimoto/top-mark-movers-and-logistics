@@ -135,10 +135,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "B2C & B2B Moves",
         light: true,
         items: [
-          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "home pic", href: "/services/residential", quoteKind: "moving" },
-          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "office pic", href: "/services/office", quoteKind: "office" },
-          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "packing pic", href: "/services/packing", quoteKind: "moving" },
-          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "mounting pic", href: "/services/mounting", quoteKind: "office" },
+          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168303/IMG_3115_1_zvmbkn.heic", href: "/services/residential", quoteKind: "moving" },
+          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168329/IMG_7003_zlmee5.heic", href: "/services/office", quoteKind: "office" },
+          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168328/IMG_7647_1_cav1ai.heic", href: "/services/packing", quoteKind: "moving" },
+          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168303/IMG_1196_xq6vlo.heic", href: "/services/mounting", quoteKind: "office" },
         ],
       },
       {
@@ -146,11 +146,10 @@ export const PAGES: Record<string, PageContent> = {
         eyebrow: "Road Freight & Haulage",
         heading: "Commercial transport",
         items: [
-          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit for sealed door-to-door movements.", image: "https://images.unsplash.com/photo-1586191582056-b5d6147053e9?auto=format&fit=crop&w=1200&q=70", href: "/freight/ftl", quoteKind: "freight" },
-          { title: "LTL & Groupage", desc: "Consolidated freight on daily corridors — lower cost, scheduled lanes.", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=70", href: "/freight/ltl", quoteKind: "freight" },
-          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks and box bodies available for short or long lease.", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=70", href: "/freight/truck-hire", quoteKind: "freight" },
-          { title: "Petroleum & Bulk Liquid", desc: "ERC-licensed tanker transport with certified drivers and tracked tankers.", image: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=70", href: "/freight/petroleum", quoteKind: "freight" },
-          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials with end-to-end visibility.", image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=70", href: "/freight/industrial", quoteKind: "freight" },
+          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit for sealed door-to-door movements.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168326/IMG_6240_cs6duq.heic", href: "/freight/ftl", quoteKind: "freight" },
+          { title: "LTL & Groupage", desc: "Consolidated freight on daily corridors — lower cost, scheduled lanes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168323/IMG_6270_xitapi.heic", href: "/freight/ltl", quoteKind: "freight" },
+          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks and box bodies available for short or long lease.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871689/hero-fleet_top2x7.png", href: "/freight/truck-hire", quoteKind: "freight" },
+          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials with end-to-end visibility.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168340/IMG_1590_1_qnmjyl.heic", href: "/freight/industrial", quoteKind: "freight" },
         ],
       },
       {
