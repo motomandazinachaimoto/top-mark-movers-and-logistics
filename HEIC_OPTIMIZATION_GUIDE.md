@@ -13,7 +13,7 @@ Your application now has a **global HEIC image optimization system** that automa
 ---
 
 ## 📁 File Structure
-
+lett
 ```
 src/
 ├── lib/
@@ -22,7 +22,7 @@ src/
 │   └── Services.tsx         ← Already updated example
 └── ...
 ```
-
+if h2 =
 ---
 
 ## 🚀 How to Use

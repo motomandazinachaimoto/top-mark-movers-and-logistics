@@ -135,10 +135,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "B2C & B2B Moves",
         light: true,
         items: [
-          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70", href: "/services/residential", quoteKind: "moving" },
-          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=70", href: "/services/office", quoteKind: "office" },
-          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32288?auto=format&fit=crop&w=1200&q=70", href: "/services/packing", quoteKind: "moving" },
-          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=70", href: "/services/mounting", quoteKind: "office" },
+          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "home pic", href: "/services/residential", quoteKind: "moving" },
+          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "office pic", href: "/services/office", quoteKind: "office" },
+          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "packing pic", href: "/services/packing", quoteKind: "moving" },
+          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "mounting pic", href: "/services/mounting", quoteKind: "office" },
         ],
       },
       {
