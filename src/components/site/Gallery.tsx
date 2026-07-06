@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { openQuote } from "@/components/site/QuoteDialog";
+import { optimizeImageUrl, usePrefetchImages } from "@/lib/optimizeImageUrl";
 
 type Slide = {
   id: string;
@@ -18,7 +19,7 @@ const SLIDES: Slide[] = [
     category: "Our Fleet",
     description:
       "From compact 3-ton vans to 40-foot long-haul trailers — every truck is GPS tracked, GIT insured and driver-vetted for safe, on-time delivery across East Africa.",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=2400&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871689/hero-fleet_top2x7.png",
   },
   {
     id: "house",
@@ -26,7 +27,7 @@ const SLIDES: Slide[] = [
     category: "Residential",
     description:
       "Professional packers, padded blankets and dedicated supervisors. We treat every plate, sofa and family photo as if it were our own.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168342/IMG_3115_o7rok0.heic",
   },
   {
     id: "office",
@@ -34,7 +35,7 @@ const SLIDES: Slide[] = [
     category: "Corporate",
     description:
       "Weekend and after-hours moves planned to the minute, so your team walks into a fully wired workspace on Monday morning.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2400&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168328/IMG_7558_xljvio.heic",
   },
   {
     id: "warehouse",
@@ -66,13 +67,16 @@ const SLIDES: Slide[] = [
     category: "Our Team",
     description:
       "Trained crews, certified drivers and dedicated move coordinators — the human touch that turns logistics into peace of mind.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168334/IMG_7717_czaptk.heic",
   },
 ];
 
 export function Gallery() {
   const [index, setIndex] = useState(0);
   const active = SLIDES[index];
+
+  // Prefetch all slide images on mount for instant transitions
+  usePrefetchImages(SLIDES.map((s) => s.image));
 
   const go = useCallback((dir: 1 | -1) => {
     setIndex((i) => (i + dir + SLIDES.length) % SLIDES.length);
@@ -112,7 +116,7 @@ export function Gallery() {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <img
-            src={active.image}
+            src={optimizeImageUrl(active.image)}
             alt={active.title}
             className="h-full w-full object-cover"
             draggable={false}
@@ -209,7 +213,7 @@ export function Gallery() {
                   aria-label={`Show ${slide.title}`}
                 >
                   <img
-                    src={slide.image}
+                    src={optimizeImageUrl(slide.image)}
                     alt={slide.title}
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     draggable={false}

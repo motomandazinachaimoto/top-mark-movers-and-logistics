@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { optimizeImageUrl, usePrefetchImages } from "@/lib/optimizeImageUrl";
 
 type BlogPost = {
   id: string;
@@ -45,7 +46,7 @@ const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-10",
     readTime: "6 min read",
     category: "Freight Tips",
-    image: "https://images.unsplash.com/photo-1586191582056-b5d6147053e9?auto=format&fit=crop&w=1200&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168334/IMG_9402_ahqlhj.heic",
     slug: "ftl-vs-ltl-cost-calculator",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-truck-driving-on-a-highway-at-sunset-4157-large.mp4"
   },
@@ -58,7 +59,7 @@ const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-05",
     readTime: "10 min read",
     category: "Industry Insights",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168331/IMG_7610_eyrrem.heic",
     slug: "cold-chain-east-africa-2026",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-warehouse-worker-loading-a-box-43512-large.mp4"
   },
@@ -71,7 +72,7 @@ const BLOG_POSTS: BlogPost[] = [
     date: "2026-05-28",
     readTime: "7 min read",
     category: "Cross-Border",
-    image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168331/IMG_7583.JPG_xptn3e.jpg",
     slug: "cross-border-tips-malaba-busia",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-in-the-ocean-4063-large.mp4"
   },
@@ -84,7 +85,7 @@ const BLOG_POSTS: BlogPost[] = [
     date: "2026-05-20",
     readTime: "5 min read",
     category: "Office Moving",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871712/IMG_7054_fw6mbe.jpg",
     slug: "office-relocation-minimizing-downtime",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-office-workers-moving-boxes-4847-large.mp4"
   },
@@ -97,7 +98,7 @@ const BLOG_POSTS: BlogPost[] = [
     date: "2026-05-15",
     readTime: "9 min read",
     category: "Insurance",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+    image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168324/IMG_6381_dthvmz.heic",
     slug: "goods-in-transit-insurance-kenya",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-truck-on-the-road-at-night-4098-large.mp4"
   }
@@ -108,6 +109,9 @@ const CATEGORIES = ["All", "Moving Tips", "Freight Tips", "Industry Insights", "
 function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+
+  // Prefetch all post images on mount
+  usePrefetchImages(BLOG_POSTS.map((p) => p.image));
 
   const filteredPosts = selectedCategory === "All"
     ? BLOG_POSTS
@@ -170,7 +174,7 @@ function Blog() {
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={post.image}
+                      src={optimizeImageUrl(post.image)}
                       alt={post.title}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
