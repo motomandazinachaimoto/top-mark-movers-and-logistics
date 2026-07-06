@@ -115,7 +115,7 @@ export function QuoteWizard() {
                             onClick={() => setData({ ...data, kind: o.id as "moving" | "freight" })}
                             className={`group relative overflow-hidden rounded-2xl border p-6 text-left ease-premium transition-all duration-500 ${
                               isSel
-                                ? "border-[var(--aqua)] bg-[rgba(0,242,254,0.06)] shadow-glow"
+                                ? "border-[var(--aqua)] bg-[rgba(46,39,245,0.06)] shadow-glow"
                                 : "border-white/10 bg-white/[0.02] hover:border-white/30"
                             }`}
                             style={{ minHeight: 180 }}
@@ -181,7 +181,7 @@ export function QuoteWizard() {
                               onClick={() => setData({ ...data, temp: t })}
                               className={`rounded-xl border px-3 py-3 text-sm capitalize ease-premium transition-all duration-500 ${
                                 data.temp === t
-                                  ? "border-[var(--aqua)] bg-[rgba(0,242,254,0.08)] text-white"
+                                  ? "border-[var(--aqua)] bg-[rgba(46,39,245,0.08)] text-white"
                                   : "border-white/10 bg-white/[0.02] text-white/65 hover:text-white"
                               }`}
                             >
@@ -283,7 +283,7 @@ function Field({
       <span className="mb-2 block text-xs uppercase tracking-[0.18em] text-white/55">
         {label}
       </span>
-      <div className="group relative flex items-center rounded-xl border border-white/10 bg-white/[0.02] ease-premium transition-all duration-500 focus-within:border-[var(--aqua)] focus-within:bg-[rgba(0,242,254,0.04)] focus-within:shadow-glow">
+      <div className="group relative flex items-center rounded-xl border border-white/10 bg-white/[0.02] ease-premium transition-all duration-500 focus-within:border-[var(--aqua)] focus-within:bg-[rgba(46,39,245,0.04)] focus-within:shadow-glow">
         <Icon className="ml-3.5 h-4 w-4 text-white/40 group-focus-within:text-[var(--aqua)]" />
         <input
           type={type}

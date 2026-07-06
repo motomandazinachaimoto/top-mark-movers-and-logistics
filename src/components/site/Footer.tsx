@@ -79,7 +79,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/75 ease-premium transition-all duration-500 hover:border-[var(--aqua)] hover:bg-[rgba(0,242,254,0.08)] hover:text-[var(--aqua)] hover:shadow-glow"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/75 ease-premium transition-all duration-500 hover:border-[var(--aqua)] hover:bg-[rgba(46,39,245,0.08)] hover:text-[var(--aqua)] hover:shadow-glow"
                 >
                   <Icon className="h-4 w-4" />
                 </a>

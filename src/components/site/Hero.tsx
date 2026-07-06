@@ -7,8 +7,21 @@ import heroPort from "@/assets/hero-port.jpg";
 import heroFleet from "@/assets/hero-fleet.jpg";
 import heroAir from "@/assets/hero-air.jpg";
 import heroMovers from "@/assets/hero-movers.jpg";
+import officeRelocation from "@/assets/office-relocation.jpg";
 
 const SLIDES = [
+  {
+    img: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871710/IMG_9480-1-600x600_ak4mhf.jpg",
+    eyebrow: "Home Relocation",
+    title: "Best Home Movers in Nairobi,Kenya\nwith expert care.",
+    desc: "From packing and loading to safe delivery and setup, we make home moving smooth, organized and stress-free.",
+  },
+  {
+    img: officeRelocation,
+    eyebrow: "Office Relocation",
+    title: "Office moves that keep\nbusiness moving.",
+    desc: "Workstations, IT equipment and office essentials moved efficiently with minimal downtime and full coordination.",
+  },
   {
     img: heroPort,
     eyebrow: "Global Freight & Intermodal",
@@ -33,6 +46,7 @@ const SLIDES = [
     title: "White-glove moves\nfor what matters most.",
     desc: "Residential, corporate and fine-art relocation handled by specialists — packed, mounted and delivered with care.",
   },
+  
 ];
 
 export function Hero() {
@@ -72,8 +86,8 @@ export function Hero() {
               fetchPriority={i === 0 ? "high" : "auto"}
               className={`h-full w-full object-cover ${i === idx ? "animate-kenburns" : ""}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/95 via-[#0A192F]/75 to-[#0A192F]/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#05107A]/70 via-[#05107A]/45 to-[#05107A]/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05107A]/70 via-transparent to-transparent" />
           </div>
         ))}
       </div>
