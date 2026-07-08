@@ -63,6 +63,12 @@ export function Header() {
 
           {/* Right cluster: CTA + Menu (mobile menu always at right end) */}
           <div className="flex shrink-0 items-center gap-2">
+            <a
+              href="tel:+254719174393"
+              className="inline-flex items-center rounded-full border border-[#3fd1d3]/30 bg-[#3fd1d3]/10 px-3 py-2 text-sm font-semibold text-[#3fd1d3] transition-colors hover:bg-[#3fd1d3]/20 sm:px-4"
+            >
+              Call Now
+            </a>
             <button
               type="button"
               onClick={openQuote}
