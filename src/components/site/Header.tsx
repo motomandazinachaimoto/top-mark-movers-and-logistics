@@ -6,6 +6,7 @@ import { QuoteButton, QuoteDialog, openQuote } from "@/components/site/QuoteDial
 const NAV = [
   { label: "Home", to: "/" },
   { label: "Services", to: "/services" },
+  { label: "Coverage", to: "/coverage" },
   { label: "Truck Hire", to: "/freight/truck-hire" },
   { label: "Gallery", to: "/gallery" },
   { label: "Blog", to: "/blog" },

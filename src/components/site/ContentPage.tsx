@@ -83,34 +83,18 @@ function pickHero(slug: string) {
 
 function FeatureCard({ item: it, index: i, light }: { item: PageFeature; index: number; light?: boolean }) {
   const hasImage = !!it.image;
-  const clickable = !!it.quoteKind;
+  const quoteClickable = !!it.quoteKind;
+  const linkClickable = !!it.href && !quoteClickable;
   const { imageSrc, isLoading } = useHeicImage(it.image ?? "");
 
   const cardCls = `reveal group relative flex flex-col overflow-hidden rounded-2xl text-left ease-premium transition-transform duration-500 ${
     light ? "card-light card-light-hover" : "glass tilt-card tilt-card-hover"
-  } ${clickable ? "cursor-pointer" : ""}`;
+  } ${quoteClickable || linkClickable ? "cursor-pointer" : ""}`;
 
-  const onClick = clickable ? () => openQuote({ kind: it.quoteKind }) : undefined;
+  const onClick = quoteClickable ? () => openQuote({ kind: it.quoteKind }) : undefined;
 
-  return (
-    <div
-      className={cardCls}
-      style={{ transitionDelay: `${i * 60}ms` }}
-      onClick={onClick}
-      onKeyDown={
-        clickable
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick?.();
-              }
-            }
-          : undefined
-      }
-      role={clickable ? "button" : undefined}
-      tabIndex={clickable ? 0 : undefined}
-      aria-label={clickable ? `Get a quote for ${it.title}` : undefined}
-    >
+  const cardBody = (
+    <>
       {hasImage && (
         <div className="relative h-44 w-full overflow-hidden">
           <img
@@ -170,12 +154,47 @@ function FeatureCard({ item: it, index: i, light }: { item: PageFeature; index: 
             ))}
           </ul>
         )}
-        {clickable && (
+        {(quoteClickable || linkClickable) && (
           <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--aqua-deep)] ease-premium transition-all duration-500 group-hover:gap-2.5">
-            Get a quote <ArrowRight className="h-3.5 w-3.5" />
+            {quoteClickable ? "Get a quote" : "View details"} <ArrowRight className="h-3.5 w-3.5" />
           </div>
         )}
       </div>
+    </>
+  );
+
+  if (linkClickable) {
+    return (
+      <Link
+        to={it.href!}
+        className={cardCls}
+        style={{ transitionDelay: `${i * 60}ms` }}
+      >
+        {cardBody}
+      </Link>
+    );
+  }
+
+  return (
+    <div
+      className={cardCls}
+      style={{ transitionDelay: `${i * 60}ms` }}
+      onClick={onClick}
+      onKeyDown={
+        quoteClickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick?.();
+              }
+            }
+          : undefined
+      }
+      role={quoteClickable ? "button" : undefined}
+      tabIndex={quoteClickable ? 0 : undefined}
+      aria-label={quoteClickable ? `Get a quote for ${it.title}` : undefined}
+    >
+      {cardBody}
     </div>
   );
 }

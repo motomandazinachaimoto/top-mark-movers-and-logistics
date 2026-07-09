@@ -9,6 +9,7 @@ import Quote from "./pages/Quote.tsx";
 import Contact from "./pages/Contact.tsx";
 import Careers from "./pages/Careers.tsx";
 import Coverage from "./pages/Coverage.tsx";
+import CoverageArea from "./pages/CoverageArea.tsx";
 import Fleet from "./pages/Fleet.tsx";
 import Gallery from "./pages/Gallery.tsx";
 import Blog from "./pages/Blog.tsx";
@@ -80,6 +81,7 @@ function App() {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/careers" element={<Layout><Careers /></Layout>} />
         <Route path="/coverage" element={<Layout><Coverage /></Layout>} />
+        <Route path="/coverage/:areaSlug" element={<Layout><CoverageArea /></Layout>} />
         <Route path="/fleet" element={<Layout><Fleet /></Layout>} />
         <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />

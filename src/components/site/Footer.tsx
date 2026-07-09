@@ -28,6 +28,7 @@ const COLS: { h: string; l: { label: string; to: string }[] }[] = [
       { label: "Air Cargo", to: "/global/air" },
       { label: "Cold Chain", to: "/global/cold-chain" },
       { label: "About Us", to: "/about" },
+      { label: "Coverage", to: "/coverage" },
       { label: "Careers", to: "/careers" },
       { label: "Contact", to: "/contact" },
     ],
