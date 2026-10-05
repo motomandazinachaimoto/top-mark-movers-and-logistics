@@ -61,6 +61,9 @@ export function Footer() {
               <a href="tel:+254719174393" className="flex items-center gap-2 hover:text-white">
                 <Phone className="h-4 w-4 text-[var(--aqua)]" /> +254 719 174 393
               </a>
+              <a href="tel:+254706488796" className="flex items-center gap-2 hover:text-white">
+                <Phone className="h-4 w-4 text-[var(--aqua)]" /> +254 706 488 796
+              </a>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-[var(--aqua)]" /> Monday to Sunday · Open 24 hours
               </div>
@@ -80,7 +83,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/75 ease-premium transition-all duration-500 hover:border-[var(--aqua)] hover:bg-[rgba(46,39,245,0.08)] hover:text-[var(--aqua)] hover:shadow-glow"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/75 ease-premium transition-all duration-500 hover:border-[var(--aqua)] hover:text-white"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
