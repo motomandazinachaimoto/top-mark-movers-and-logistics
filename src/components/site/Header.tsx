@@ -55,7 +55,7 @@ export function Header() {
                 key={n.to}
                 to={n.to}
                 end={n.to === "/"}
-                className="rounded-full px-4 py-2 text-sm font-medium text-white/75 ease-premium transition-colors duration-300 hover:bg-white/5 hover:text-white data-[status=active]:bg-white/[0.06] data-[status=active]:text-white"
+                className="rounded-full px-4 py-2 text-sm font-medium text-white/75 ease-premium transition-colors duration-300 hover:bg-white/5 hover:text-white data-[status=active]:bg-white/[0.08] data-[status=active]:text-white"
               >
                 {n.label}
               </NavLink>
@@ -67,6 +67,7 @@ export function Header() {
             <a
               href="tel:+254719174393"
               className="inline-flex items-center rounded-full border border-[#3fd1d3]/30 bg-[#3fd1d3]/10 px-3 py-2 text-sm font-semibold text-[#3fd1d3] transition-colors hover:bg-[#3fd1d3]/20 sm:px-4"
+              title="Call: +254 719 174 393 or +254 706 488 796"
             >
               Call Now
             </a>
