@@ -33,7 +33,7 @@ export type PageContent = {
 };
 
 const QUOTE_CTA = { label: "Get Quote", href: "/quote" };
-const CALL_CTA = { label: "Call 0719 174 393", href: "tel:+254719174393" };
+const CALL_CTA = { label: "Call 0719 174 393 / 0706 488 796", href: "tel:+254719174393" };
 
 export const PAGES: Record<string, PageContent> = {
   about: {
@@ -42,7 +42,7 @@ export const PAGES: Record<string, PageContent> = {
     title: "Moving Kenya forward,",
     titleAccent: "one shipment at a time.",
     lede:
-      "Topmark Movers and Logistics is an asset-heavy operator engineering premium relocations and end-to-end supply chains across 47 counties and 80+ global trade lanes. We pair audited safety with a 24/7 control tower so operators who can't afford delays never have to.",
+      "Topmark Movers and Logistics is an asset-heavy operator engineering premium relocations and end-to-end supply chains across 47 counties and 80+ global trade lanes. We pair audited safety with disciplined execution, offering formal moving, freight and global logistics support for homes, businesses and industrial clients.",
     ctaPrimary: QUOTE_CTA,
     ctaSecondary: { label: "Meet our network", href: "/coverage" },
     blocks: [
@@ -135,10 +135,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "B2C & B2B Moves",
         light: true,
         items: [
-          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168303/IMG_3115_1_zvmbkn.heic", href: "/services/residential", quoteKind: "moving" },
-          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168329/IMG_7003_zlmee5.heic", href: "/services/office", quoteKind: "office" },
-          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168328/IMG_7647_1_cav1ai.heic", href: "/services/packing", quoteKind: "moving" },
-          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168303/IMG_1196_xq6vlo.heic", href: "/services/mounting", quoteKind: "office" },
+          { title: "Residential House Moving", desc: "Full packing, dismantling and home setup for studios, apartments and family homes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168325/IMG_1589_1_qv0scl.jpg" },
+          { title: "Office & Corporate Relocations", desc: "Minimal downtime, secure IT and file handling for growing teams.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168328/IMG_1600_1_kg9azk.jpg" },
+          { title: "Premium Packing & Crating", desc: "Heavy-duty materials and custom crates for fragile and high-value items.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168324/IMG_1578_1_zpcjv6.jpg" },
+          { title: "Mounting & Handyman", desc: "TVs, art, mirrors and shelving installed on arrival by trained crews.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168303/IMG_1559_1_jovr4g.jpg" },
         ],
       },
       {
@@ -146,10 +146,10 @@ export const PAGES: Record<string, PageContent> = {
         eyebrow: "Road Freight & Haulage",
         heading: "Commercial transport",
         items: [
-          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit for sealed door-to-door movements.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168326/IMG_6240_cs6duq.heic", href: "/freight/ftl", quoteKind: "freight" },
-          { title: "LTL & Groupage", desc: "Consolidated freight on daily corridors — lower cost, scheduled lanes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168323/IMG_6270_xitapi.heic", href: "/freight/ltl", quoteKind: "freight" },
-          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks and box bodies available for short or long lease.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871689/hero-fleet_top2x7.png", href: "/freight/truck-hire", quoteKind: "freight" },
-          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials with end-to-end visibility.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168340/IMG_1590_1_qnmjyl.heic", href: "/freight/industrial", quoteKind: "freight" },
+          { title: "Full Truckload (FTL)", desc: "Dedicated asset, fastest transit for sealed door-to-door movements.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168326/IMG_6147_1_kn8hxv.jpg" },
+          { title: "LTL & Groupage", desc: "Consolidated freight on daily corridors — lower cost, scheduled lanes.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168323/IMG_6204_1_zv3vkx.jpg" },
+          { title: "Truck Hire & Fleet Rental", desc: "Canters, open trucks and box bodies available for short or long lease.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1781871659/IMG_1551_1_bz1g9t.jpg" },
+          { title: "Industrial Supply Chain", desc: "Port-to-factory raw materials with end-to-end visibility.", image: "https://res.cloudinary.com/dun0ibkj0/image/upload/v1783168340/IMG_1590_1_q0o1ex.jpg" },
         ],
       },
       {
@@ -158,10 +158,10 @@ export const PAGES: Record<string, PageContent> = {
         heading: "Intermodal & specialized",
         light: true,
         items: [
-          { title: "Ocean Freight (FCL / LCL)", desc: "Door-to-door global container logistics on the world's major lanes.", image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=70", href: "/global/ocean", quoteKind: "freight" },
-          { title: "Air Cargo", desc: "Expedited international transit for time-critical and high-value cargo.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=70", href: "/global/air", quoteKind: "freight" },
-          { title: "Cold Chain", desc: "Temperature-validated transport for pharma, perishables and biotech.", image: "https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1200&q=70", href: "/global/cold-chain", quoteKind: "freight" },
-          { title: "Project & OOG Cargo", desc: "Heavy haul for oversized, out-of-gauge industrial equipment and turnkey projects.", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=70", href: "/global/project-cargo", quoteKind: "freight" },
+          { title: "Ocean Freight (FCL / LCL)", desc: "Door-to-door global container logistics on the world's major lanes.", image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=80" },
+          { title: "Air Cargo", desc: "Expedited international transit for time-critical and high-value cargo.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80" },
+          { title: "Cold Chain", desc: "Temperature-validated transport for pharma, perishables and biotech.", image: "https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1200&q=80" },
+          { title: "Project & OOG Cargo", desc: "Heavy haul for oversized, out-of-gauge industrial equipment and turnkey projects.", image: "https://images.unsplash.com/photo-1578575437130-527eedc8a0a4?auto=format&fit=crop&w=1200&q=80" },
         ],
       },
     ],
@@ -682,9 +682,9 @@ export const PAGES: Record<string, PageContent> = {
         eyebrow: "Channels",
         light: true,
         items: [
-          { title: "24/7 Hotline", desc: "+254 719 174 393 — dispatch, incidents, ETA queries." },
+          { title: "24/7 Hotline", desc: "+254 719 174 393 / +254 706 488 796 — dispatch, incidents, ETA queries." },
           { title: "Operations Email", desc: "info@topmarkmovers.com — quotes, bookings, documentation." },
-          { title: "WhatsApp Business", desc: "+254 719 174 393 — photos of cargo and locations welcome." },
+          { title: "WhatsApp Business", desc: "+254 719 174 393 / +254 706 488 796 — photos of cargo and locations welcome." },
           { title: "Office Hours", desc: "Monday to Sunday — open 24 hours. Walk-ins welcome at our Nairobi head office." },
           { title: "Facebook", desc: "facebook.com/topmarkmovers — updates, fleet photos and customer stories." },
           { title: "Instagram", desc: "instagram.com/topmarkmovers — behind-the-scenes and project highlights." },
@@ -699,7 +699,7 @@ export const PAGES: Record<string, PageContent> = {
     eyebrow: "Legal",
     title: "Terms of Service",
     lede:
-      "These terms govern your use of Topmark Movers and Logistics services. By booking a job with us, you agree to the conditions below. This page is maintained by Topmark and is not a substitute for the signed service agreement covering enterprise contracts.",
+      "These terms govern your use of Topmark Movers and Logistics services. By booking a job with us, you agree to the conditions below. This page is maintained by Topmark and is not a substitute for legal advice.",
     blocks: [
       {
         kind: "features",
@@ -739,7 +739,7 @@ export const PAGES: Record<string, PageContent> = {
     eyebrow: "Legal",
     title: "Goods in Transit Insurance",
     lede:
-      "Every consignment Topmark moves is covered by Goods in Transit (GIT) insurance as standard. This page summarizes how coverage works; the binding terms are in your insurer-issued certificate.",
+      "Every consignment Topmark moves is covered by Goods in Transit (GIT) insurance as standard. This page summarizes how coverage works; the binding terms are in your insurer-issued certificate and service agreement.",
     blocks: [
       {
         kind: "features",
