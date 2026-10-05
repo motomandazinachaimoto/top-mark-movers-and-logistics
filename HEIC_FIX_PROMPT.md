@@ -1,8 +1,3 @@
-# HEIC Image Fix — Reusable Prompt
-
-Paste this into Copilot Chat any time you add new images and they aren't showing:
-
----
 
 > I have HEIC images from Cloudinary that aren't displaying in the browser. Fix them using our existing `optimizeImageUrl` and `usePrefetchImages` utilities from `@/lib/optimizeImageUrl`.
 >
